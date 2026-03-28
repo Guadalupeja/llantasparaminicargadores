@@ -7,18 +7,18 @@ use Illuminate\View\View;
 
 class PageController extends Controller
 {
-    public function home(): View
-    {
-        $seo = [
-            'title' => 'Llantas para Minicargadores',
-            'description' => 'Llantas sólidas y llantas neumáticas para minicargadores. Conoce nuestras opciones y solicita información.',
-            'canonical' => url('/'),
-            'image' => asset('images/seo/default.jpg'),
-            'robots' => 'index,follow',
-        ];
+public function home(): View
+{
+    $seo = [
+        'title' => 'Llantas para Minicargadores | Llantas sólidas y neumáticas',
+        'description' => 'Conoce nuestra línea de llantas para minicargadores, incluyendo llantas sólidas y llantas neumáticas para trabajo exigente.',
+        'canonical' => url('/'),
+        'image' => asset('images/seo/default.jpg'),
+        'robots' => 'index,follow',
+    ];
 
-        return view('pages.home', compact('seo'));
-    }
+    return view('pages.home', compact('seo'));
+}
 
     public function about(): View
     {
