@@ -11,7 +11,7 @@ public function home(): View
 {
     $seo = [
         'title' => 'Llantas para Minicargadores | Llantas sólidas y neumáticas',
-        'description' => 'Conoce nuestra línea de llantas para minicargadores, incluyendo llantas sólidas y llantas neumáticas para trabajo exigente.',
+        'description' => 'Venta de llantas para minicargadores. Conoce nuestra línea de llantas sólidas y llantas neumáticas para distintas aplicaciones y condiciones de trabajo.',
         'canonical' => url('/'),
         'image' => asset('images/seo/default.jpg'),
         'robots' => 'index,follow',

@@ -1,9 +1,9 @@
 <header class="sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 lg:px-8">
         <div class="flex h-16 items-center justify-between">
-            <a href="{{ url('/') }}" class="inline-flex items-center text-lg font-semibold tracking-tight text-zinc-900">
-                Llantas para Minicargadores
-            </a>
+        <a href="{{ url('/') }}" class="inline-flex items-center text-lg font-semibold tracking-tight text-zinc-900">
+            Llantas para Minicargador
+        </a>
 
             <nav class="hidden items-center gap-6 md:flex">
                 <a href="{{ url('/') }}" class="text-sm font-medium text-zinc-700 transition hover:text-zinc-900">
