@@ -10,8 +10,8 @@ class PageController extends Controller
 public function home(): View
 {
     $seo = [
-        'title' => 'Llantas para Minicargadores | Llantas sólidas y neumáticas',
-        'description' => 'Venta de llantas para minicargadores. Conoce nuestra línea de llantas sólidas y llantas neumáticas para distintas aplicaciones y condiciones de trabajo.',
+        'title' => 'Llantas para minicargadores | Trelleborg distribuidores 2026',
+        'description' => 'Llantas sólidas y llantas neumáticas para minicargador. Distribuidores autorizados de la marca Trelleborg.',
         'canonical' => url('/'),
         'image' => asset('images/seo/default.jpg'),
         'robots' => 'index,follow',
