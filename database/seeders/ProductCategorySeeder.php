@@ -16,7 +16,7 @@ class ProductCategorySeeder extends Seeder
                 'title' => 'Llantas sólidas para minicargador',
                 'meta_description' => 'Conoce nuestra línea de llantas sólidas para minicargador para trabajo pesado y alto desempeño.',
                 'h1' => 'Llantas sólidas para minicargador',
-                'intro' => 'Soluciones de llantas sólidas para minicargadores en aplicaciones exigentes.',
+                'intro' => 'Imponchables, libres de mantenimiento y de uso rudo.',
                 'description' => 'Encuentra opciones de llantas sólidas diseñadas para resistencia, estabilidad y larga vida útil.',
                 'hero_image' => 'categories/solid/hero.jpg',
                 'status' => true,

@@ -1,10 +1,63 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
 
-/* Base global del proyecto */
+@theme {
+    --color-ruguex-orange: #ff6a00;
+    --color-ruguex-orange-dark: #e55f00;
+    --color-ruguex-black: #000000;
+    --color-ruguex-bg: #f5f5f5;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #808285;
+    overflow-x: hidden;
 }
+
+a {
+    text-decoration: none;
+}
+
+
+.ruguex-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    padding-left: 38px;
+    padding-right: 38px;
+    border-radius: 8px;
+    background-color: #e76a3e;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color .2s ease;
+}
+
+.ruguex-btn:hover {
+    background-color: #e55f00;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .ruguex-btn {
+        min-height: 52px;
+        padding-left: 26px;
+        padding-right: 26px;
+        font-size: 16px;
+    }
+
+    .ruguex-section-title {
+        font-size: 30px;
+    }
+}
+
+
+   

@@ -5,7 +5,13 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\MinicargadorLeadController;
 use Illuminate\Support\Facades\Route;
+
+
+use Illuminate\Support\Facades\Mail;
+
+
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/somos', [PageController::class, 'about'])->name('about');
@@ -13,6 +19,11 @@ Route::get('/contacto', [PageController::class, 'contact'])->name('contact');
 Route::get('/gracias', [PageController::class, 'thanks'])->name('thanks');
 
 Route::post('/contacto', [ContactController::class, 'store'])->name('contact.store');
+
+
+Route::post('/minicargador/lead', [MinicargadorLeadController::class, 'store'])
+    ->name('minicargador.lead.store');
+
 
 Route::get('/llantas-solidas-para-minicargador', [ProductCategoryController::class, 'solid'])
     ->name('categories.solid');
