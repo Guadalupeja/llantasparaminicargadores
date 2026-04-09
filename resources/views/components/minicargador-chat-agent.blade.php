@@ -153,7 +153,7 @@
             aria-label="Abrir chat"
         >
                 <img
-                src="{{ asset('img/chat/logo-rgx.jpg') }}"
+                src="{{ asset('img/chat/logo-rgx.png') }}"
                 alt="Ruguex"
                 class="h-full w-full object-cover"
                 loading="lazy"

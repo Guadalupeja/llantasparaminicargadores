@@ -15,8 +15,8 @@ class ProductCategoryController extends Controller
             ->firstOrFail();
 
         $seo = [
-            'title' => $category->title,
-            'description' => $category->meta_description,
+            'title' => 'Mejores llantas sólidas para Minicargadores 2026| Trelleborg',
+            'description' => 'Llantas sólidas para minicargador, las mejores llantas macizas 2026, neumáticos, cushion para Minicargadores. 3 veces más hule consumible, precios mayorista',
             'canonical' => url('/llantas-solidas-para-minicargador'),
             'image' => asset('images/seo/default.jpg'),
             'robots' => 'index,follow',

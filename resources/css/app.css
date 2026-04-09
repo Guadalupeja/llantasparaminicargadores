@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-    --color-ruguex-orange: #ff6a00;
+    --color-ruguex-orange: #e76a3e;
     --color-ruguex-orange-dark: #e55f00;
     --color-ruguex-black: #000000;
     --color-ruguex-bg: #f5f5f5;
@@ -61,3 +61,6 @@ a {
 
 
    
+
+
+

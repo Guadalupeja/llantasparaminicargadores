@@ -55,8 +55,8 @@
 
         <div class="absolute inset-0 bg-black/75"></div>
 
-        <div class="relative mx-auto max-w-[1140px] px-[10px] py-[80px] md:py-[90px]">
-            <h1 class="text-center font-['Roboto',sans-serif] text-[30px] font-semibold leading-[1.2] text-white md:text-[32px]">
+        <div class="relative mx-auto max-w-[1140px] px-[10px] py-[80px] md:py-[110px]">
+            <h1 class="text-center font-['Roboto',sans-serif] text-[30px] lg:text-[40px] font-semibold leading-[1.2] text-white md:text-[32px]">
                 {{ $category->h1 ?: 'Llantas sólidas para Minicargadores' }}
             </h1>
         </div>
@@ -107,14 +107,14 @@
 
                             <div class="w-full text-center">
                                 <div class="mt-[-60px] bg-[#00063a] p-[15px] min-h-[98px]">
-                                    <h3 class="m-0 font-['Roboto',sans-serif] text-[22px] font-semibold leading-[1.3] text-white md:text-[26px] md:leading-[33.8px]">
+                                    <h2 class="m-0 font-['Roboto',sans-serif] text-[22px] font-semibold leading-[1.3] text-white md:text-[26px] md:leading-[33.8px]">
                                         <a
                                             href="{{ url('/llantas-solidas-para-minicargador/' . $product->slug) }}"
                                             class="text-white no-underline transition duration-200 hover:text-white"
                                         >
                                             {{ $product->name }}
                                         </a>
-                                    </h3>
+                                    </h2>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
 
     {{-- Botón tienda --}}
     <section class="bg-[#f5f5f5]">
-        <div class="mx-auto max-w-[1140px] px-[10px] pb-[10px]">
+        <div class="mx-auto max-w-[1140px] px-[20px] pb-[20px]">
             <div class="h-[20px]"></div>
 
             <div class="text-center">
@@ -134,7 +134,7 @@
                     href="https://llantasdemontacargas.com/tienda-en-linea/?swoof=1&product_cat=llantas-minicargadores"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center rounded-[3px] bg-[#ff6a00] px-[24px] py-[12px] font-['Roboto',sans-serif] text-[15px] font-medium leading-[15px] text-white transition duration-300 hover:bg-[#e85f00]"
+                    class="inline-flex items-center justify-center rounded-[3px] bg-[#e76a3e] px-[24px] py-[12px] lg:px-[34px] lg:py-[22px]  font-['Roboto',sans-serif] text-[15px] lg:text-[30px] font-medium leading-[15px] text-white transition duration-300 hover:bg-[#e85f00]"
                 >
                     Ir a la tienda en línea
                 </a>
