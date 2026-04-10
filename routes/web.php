@@ -37,4 +37,10 @@ Route::get('/llantas-solidas-para-minicargador/{product}', [ProductController::c
 Route::get('/llantas-neumaticas-para-minicargador/{product}', [ProductController::class, 'showPneumatic'])
     ->name('products.pneumatic.show');
 
+
+Route::get('/llanta-12-16-5', [PageController::class, 'landing12165'])->name('landing.12165');
+Route::get('/llanta-10-16-5', [PageController::class, 'landing10165'])->name('landing.10165');
+
+
+
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
