@@ -2,20 +2,83 @@
 
 @push('meta')
     @php
+        $pageUrl = url('/llantas-neumaticas-para-minicargador');
+        $pageTitle = $seo['title'] ?? 'Mejores llantas sólidas para Minicargadores 2026| Trelleborg';
+        $pageDescription = $seo['description'] ?? 'Llantas neumáticas para minicargador con mejor amortiguamiento, versatilidad y desempeño en terrenos variables.';
+        $pageImage = asset('storage/originals/heros/llantas-neumaticas-para-minicargadores.jpg');
+
+        $itemListElements = [];
+        $productGraph = [];
+
+        foreach ($category->products as $index => $product) {
+            $productUrl = url('/llantas-neumaticas-para-minicargador/' . $product->slug);
+            $productImage = $product->hero_image
+                ? asset('storage/originals/' . ltrim($product->hero_image, '/'))
+                : asset('storage/originals/products/default-pneumatic.jpg');
+
+            $itemListElements[] = [
+                '@type' => 'ListItem',
+                'position' => $index + 1,
+                'url' => $productUrl,
+                'name' => $product->name,
+            ];
+
+            $productGraph[] = [
+                '@type' => 'Product',
+                '@id' => $productUrl . '#product',
+                'name' => $product->name,
+                'url' => $productUrl,
+                'image' => [$productImage],
+                'category' => $category->name,
+                'brand' => [
+                    '@type' => 'Brand',
+                    'name' => 'Ruguex',
+                ],
+                'description' => $product->excerpt
+                    ?? $product->short_description
+                    ?? ('Llanta neumática para minicargador ' . $product->name),
+                'isRelatedTo' => [
+                    '@id' => $pageUrl . '#collectionpage',
+                ],
+            ];
+        }
+
         $pneumaticStructuredData = [
             '@context' => 'https://schema.org',
-            '@graph' => [
+            '@graph' => array_merge([
                 [
                     '@type' => 'CollectionPage',
-                    '@id' => url('/llantas-neumaticas-para-minicargador') . '#collectionpage',
-                    'url' => url('/llantas-neumaticas-para-minicargador'),
-                    'name' => $seo['title'] ?? 'Llantas neumáticas para minicargador',
-                    'description' => $seo['description'] ?? '',
+                    '@id' => $pageUrl . '#collectionpage',
+                    'url' => $pageUrl,
+                    'name' => $pageTitle,
+                    'description' => $pageDescription,
                     'inLanguage' => 'es-MX',
+                    'primaryImageOfPage' => [
+                        '@type' => 'ImageObject',
+                        'url' => $pageImage,
+                    ],
+                ],
+                [
+                    '@type' => 'WebPage',
+                    '@id' => $pageUrl . '#webpage',
+                    'url' => $pageUrl,
+                    'name' => $pageTitle,
+                    'description' => $pageDescription,
+                    'inLanguage' => 'es-MX',
+                    'isPartOf' => [
+                        '@type' => 'WebSite',
+                        '@id' => url('/') . '#website',
+                    ],
+                    'breadcrumb' => [
+                        '@id' => $pageUrl . '#breadcrumb',
+                    ],
+                    'about' => [
+                        '@id' => $pageUrl . '#collectionpage',
+                    ],
                 ],
                 [
                     '@type' => 'BreadcrumbList',
-                    '@id' => url('/llantas-neumaticas-para-minicargador') . '#breadcrumb',
+                    '@id' => $pageUrl . '#breadcrumb',
                     'itemListElement' => [
                         [
                             '@type' => 'ListItem',
@@ -27,11 +90,19 @@
                             '@type' => 'ListItem',
                             'position' => 2,
                             'name' => $category->name,
-                            'item' => url('/llantas-neumaticas-para-minicargador'),
+                            'item' => $pageUrl,
                         ],
                     ],
                 ],
-            ],
+                [
+                    '@type' => 'ItemList',
+                    '@id' => $pageUrl . '#itemlist',
+                    'name' => 'Modelos de llantas neumáticas para minicargador',
+                    'url' => $pageUrl,
+                    'numberOfItems' => count($category->products),
+                    'itemListElement' => $itemListElements,
+                ],
+            ], $productGraph),
         ];
     @endphp
 
@@ -55,8 +126,8 @@
 
         <div class="absolute inset-0 bg-black/75"></div>
 
-        <div class="relative mx-auto max-w-[1140px] px-[10px] py-[80px] md:py-[90px]">
-            <h1 class="text-center font-['Roboto',sans-serif] text-[30px] font-semibold leading-[1.2] text-white md:text-[32px]">
+        <div class="relative mx-auto max-w-[1140px] px-[10px] py-[80px] md:py-[110px]">
+            <h1 class="text-center font-['Roboto',sans-serif] text-[30px] lg:text-[40px] font-semibold leading-[1.2] text-white md:text-[32px]">
                 {{ $category->h1 ?: 'Llantas neumáticas para Minicargadores' }}
             </h1>
         </div>
@@ -107,14 +178,14 @@
 
                             <div class="w-full text-center">
                                 <div class="mt-[-60px] bg-[#00063a] p-[15px]">
-                                    <h3 class="m-0 font-['Roboto',sans-serif] text-[22px] font-semibold leading-[1.3] text-white md:text-[26px] md:leading-[33.8px]">
+                                    <h2 class="m-0 font-['Roboto',sans-serif] text-[22px] font-semibold leading-[1.3] text-white md:text-[26px] md:leading-[33.8px]">
                                         <a
                                             href="{{ url('/llantas-neumaticas-para-minicargador/' . $product->slug) }}"
                                             class="text-white no-underline transition duration-200 hover:text-white"
                                         >
                                             {{ $product->name }}
                                         </a>
-                                    </h3>
+                                    </h2>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +197,7 @@
 
     {{-- Botón tienda --}}
     <section class="bg-[#f5f5f5]">
-        <div class="mx-auto max-w-[1140px] px-[10px] pb-[10px]">
+        <div class="mx-auto max-w-[1140px] px-[20px] pb-[20px]">
             <div class="h-[20px]"></div>
 
             <div class="text-center">
@@ -134,7 +205,7 @@
                     href="https://llantasdemontacargas.com/tienda-en-linea/?swoof=1&product_cat=llantas-minicargadores"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center rounded-[3px] bg-[#ff6a00] px-[24px] py-[12px] font-['Roboto',sans-serif] text-[15px] font-medium leading-[15px] text-white transition duration-300 hover:bg-[#e85f00]"
+                    class="inline-flex items-center justify-center rounded-[3px] bg-[#e76a3e] px-[24px] py-[12px] lg:px-[34px] lg:py-[22px] font-['Roboto',sans-serif] text-[15px] lg:text-[30px] font-medium leading-[15px] text-white transition duration-300 hover:bg-[#e85f00]"
                 >
                     Ir a la tienda en línea
                 </a>

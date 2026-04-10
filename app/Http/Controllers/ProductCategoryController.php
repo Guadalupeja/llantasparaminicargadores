@@ -33,8 +33,8 @@ class ProductCategoryController extends Controller
             ->firstOrFail();
 
         $seo = [
-            'title' => $category->title,
-            'description' => $category->meta_description,
+            'title' => 'Llantas Neumáticas para Minicargador',
+            'description' => 'Llantas Neumáticas para minicargador 2026, cotiza aquí llantas macizas, neumáticos, cushion para Minicargadores. 3 veces más hule consumible, precios mayoristas',
             'canonical' => url('/llantas-neumaticas-para-minicargador'),
             'image' => asset('images/seo/default.jpg'),
             'robots' => 'index,follow',

@@ -2,20 +2,83 @@
 
 @push('meta')
     @php
+        $pageUrl = url('/llantas-solidas-para-minicargador');
+        $pageTitle = $seo['title'] ?? 'Llantas sólidas para minicargador';
+        $pageDescription = $seo['description'] ?? 'Llantas sólidas para minicargador imponchables, libres de mantenimiento y de uso rudo.';
+        $pageImage = asset('storage/originals/heros/llantas-solidas-para-minicargadores.jpg');
+
+        $itemListElements = [];
+        $productGraph = [];
+
+        foreach ($category->products as $index => $product) {
+            $productUrl = url('/llantas-solidas-para-minicargador/' . $product->slug);
+            $productImage = $product->hero_image
+                ? asset('storage/originals/' . ltrim($product->hero_image, '/'))
+                : asset('storage/originals/products/default-solid.jpg');
+
+            $itemListElements[] = [
+                '@type' => 'ListItem',
+                'position' => $index + 1,
+                'url' => $productUrl,
+                'name' => $product->name,
+            ];
+
+            $productGraph[] = [
+                '@type' => 'Product',
+                '@id' => $productUrl . '#product',
+                'name' => $product->name,
+                'url' => $productUrl,
+                'image' => [$productImage],
+                'category' => $category->name,
+                'brand' => [
+                    '@type' => 'Brand',
+                    'name' => 'Ruguex',
+                ],
+                'description' => $product->excerpt
+                    ?? $product->short_description
+                    ?? ('Llanta sólida para minicargador ' . $product->name),
+                'isRelatedTo' => [
+                    '@id' => $pageUrl . '#collectionpage',
+                ],
+            ];
+        }
+
         $solidStructuredData = [
             '@context' => 'https://schema.org',
-            '@graph' => [
+            '@graph' => array_merge([
                 [
                     '@type' => 'CollectionPage',
-                    '@id' => url('/llantas-solidas-para-minicargador') . '#collectionpage',
-                    'url' => url('/llantas-solidas-para-minicargador'),
-                    'name' => $seo['title'] ?? 'Llantas sólidas para minicargador',
-                    'description' => $seo['description'] ?? '',
+                    '@id' => $pageUrl . '#collectionpage',
+                    'url' => $pageUrl,
+                    'name' => $pageTitle,
+                    'description' => $pageDescription,
                     'inLanguage' => 'es-MX',
+                    'primaryImageOfPage' => [
+                        '@type' => 'ImageObject',
+                        'url' => $pageImage,
+                    ],
+                ],
+                [
+                    '@type' => 'WebPage',
+                    '@id' => $pageUrl . '#webpage',
+                    'url' => $pageUrl,
+                    'name' => $pageTitle,
+                    'description' => $pageDescription,
+                    'inLanguage' => 'es-MX',
+                    'isPartOf' => [
+                        '@type' => 'WebSite',
+                        '@id' => url('/') . '#website',
+                    ],
+                    'breadcrumb' => [
+                        '@id' => $pageUrl . '#breadcrumb',
+                    ],
+                    'about' => [
+                        '@id' => $pageUrl . '#collectionpage',
+                    ],
                 ],
                 [
                     '@type' => 'BreadcrumbList',
-                    '@id' => url('/llantas-solidas-para-minicargador') . '#breadcrumb',
+                    '@id' => $pageUrl . '#breadcrumb',
                     'itemListElement' => [
                         [
                             '@type' => 'ListItem',
@@ -27,11 +90,19 @@
                             '@type' => 'ListItem',
                             'position' => 2,
                             'name' => $category->name,
-                            'item' => url('/llantas-solidas-para-minicargador'),
+                            'item' => $pageUrl,
                         ],
                     ],
                 ],
-            ],
+                [
+                    '@type' => 'ItemList',
+                    '@id' => $pageUrl . '#itemlist',
+                    'name' => 'Modelos de llantas sólidas para minicargador',
+                    'url' => $pageUrl,
+                    'numberOfItems' => count($category->products),
+                    'itemListElement' => $itemListElements,
+                ],
+            ], $productGraph),
         ];
     @endphp
 
@@ -39,6 +110,7 @@
         {!! json_encode($solidStructuredData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
 @endpush
+
 
 @section('content')
     {{-- Hero --}}
