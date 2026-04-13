@@ -173,6 +173,22 @@
                         </div>
                     </div>
 
+                    <div class="group relative">
+                        <a href="#" class="flex items-center px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
+                            Por medida
+                        </a>
+                        <div class="invisible absolute left-0 top-full z-50 mt-0 w-[250px] translate-y-[10px] bg-white opacity-0 shadow-[0_0_10px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                            <a href="{{ url('/llanta-10-16-5') }}" target="_blank" rel="noopener noreferrer" class="flex px-2 py-2 text-[13px] font-normal leading-[25px] tracking-[0.5px] text-[#636363] transition-colors duration-300 hover:bg-zinc-50 hover:text-[#e76a3e]">
+                                Llanta 10-16.5
+                            </a>
+                        
+
+                          <a href="{{ url('/llanta-12-16-5') }}" target="_blank" rel="noopener noreferrer" class="flex px-2 py-2 text-[13px] font-normal leading-[25px] tracking-[0.5px] text-[#636363] transition-colors duration-300 hover:bg-zinc-50 hover:text-[#e76a3e]">
+                                Llanta 12-16.5
+                            </a>
+                       </div>
+                    </div>
+
                     <a href="{{ url('/contacto') }}" class="px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
                         Contacto
                     </a>
