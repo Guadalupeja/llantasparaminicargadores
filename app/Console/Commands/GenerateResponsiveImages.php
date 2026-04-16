@@ -15,7 +15,14 @@ class GenerateResponsiveImages extends Command
     {
         $path = $this->argument('path');
 
-        $files = Storage::disk('public')->allFiles('originals');
+        $files = collect(Storage::disk('public')->allFiles('originals'))
+    ->filter(function ($path) {
+        $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+        return in_array($extension, ['jpg', 'jpeg', 'png', 'webp', 'avif']);
+    })
+    ->values()
+    ->all();
 
         foreach ($files as $file) {
             $relative = str_replace('originals/', '', $file);
