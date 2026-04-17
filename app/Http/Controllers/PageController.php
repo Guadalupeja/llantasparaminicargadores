@@ -98,6 +98,7 @@ public function landing12165(): View
         'uses_image' => 'landings/12-16-5/usos-12-16-5.jpg',
         'distributor_image' => 'landings/12-16-5/distribuidor-12-16-5.png',
         'bobcat_visual_image' => 'landings/12-16-5/Llanta-S100-Bobcat.jpg',
+        'featured_model_image' => 'landings/12-16-5/Llanta-para-minicargador-S550.jpg',
 
         'intro_title' => '¿Qué llanta Bobcat 12-16.5 necesita tu minicargador?',
         'intro_text_1' => 'La medida 12-16.5 / 33x12-20/7.5 se utiliza en minicargadores Bobcat donde se requiere resistencia, estabilidad y desempeño en condiciones de trabajo pesado.',
@@ -363,6 +364,7 @@ public function landing12165(): View
         'uses_image' => 'landings/10-16-5/usos-10-16-5.jpg',
         'distributor_image' => 'landings/10-16-5/distribuidor-10-16-5.png',
         'bobcat_visual_image' => 'landings/10-16-5/Llanta-S100-Bobcat.jpg',
+        'featured_model_image' => 'landings/10-16-5/Llanta-para-minicargador-S550.jpg',
 
         'intro_title' => '¿Qué llanta Bobcat 10-16.5 necesita tu minicargador?',
         'intro_text_1' => 'La medida 10-16.5 / 31x10-20/7.5 es ideal para minicargadores Bobcat compactos que trabajan en construcción, patios de servicio, superficies mixtas y aplicaciones donde se requiere equilibrio entre tracción, estabilidad y resistencia.',
@@ -589,133 +591,146 @@ public function landing12165(): View
 
     return view('pages.landing-medida', compact('seo', 'landing'));
 }
-    private function minicargadorCatalog(): array
-    {
-        return [
-            'neumatica' => [
-                '10-16.5' => [
-                    [
-                        'label' => 'Neumática 1-2 turnos',
-                        'type_label' => 'Neumática',
-                        'promo' => 'Entrega inmediata',
-                        'description' => 'Llanta neumática para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
-                        'price' => '$6,425.35 IVA incluido',
-                        'image' => asset('img/chat/neumatica-10-16-5-1-2-turnos.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-10-16-5-trabajo-medio-6/',
-                    ],
-                    [
-                        'label' => 'Neumática 3 turnos',
-                        'type_label' => 'Neumática',
-                        'promo' => 'Trabajo 3 turnos',
-                        'description' => 'Llanta neumática para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
-                        'price' => '$7,800.20 IVA incluido',
-                        'image' => asset('img/chat/neumatica-10-16-5-3-turnos.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-10-16-5-trabajo-medio-4/',
-                    ],
+private function minicargadorCatalog(): array
+{
+    return [
+        'neumatica' => [
+            '10-16.5' => [
+                [
+                    'label' => 'Neumática 1-2 turnos',
+                    'type_label' => 'Neumática',
+                    'promo' => 'Entrega inmediata',
+                    'description' => 'Llanta neumática para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+                    'price' => '$6,425.35 IVA incluido',
+                    'image' => asset('img/chat/neumatica-10-16-5-1-2-turnos.jpg'),
+                    'image_path' => 'chat/neumatica-10-16-5-1-2-turnos.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-10-16-5-trabajo-medio-6/',
                 ],
-                '12-16.5' => [
-                    [
-                        'label' => 'Neumática 1-2 turnos',
-                        'type_label' => 'Neumática',
-                        'promo' => 'Entrega inmediata',
-                        'description' => 'Llanta neumática para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
-                        'price' => '$8,610.46 IVA incluido',
-                        'image' => asset('img/chat/neumatica-12-16-5-1-2-turnos.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-12-16-5-trabajo-pesado-2/',
-                    ],
-                    [
-                        'label' => 'Neumática 3 turnos',
-                        'type_label' => 'Neumática',
-                        'promo' => 'Trabajo 3 turnos',
-                        'description' => 'Llanta neumática para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
-                        'price' => '$9,513.43 IVA incluido',
-                        'image' => asset('img/chat/neumatica-12-16-5-3-turnos.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatico-para-minicargador-12-16-5-trabajo-pesado-2/',
-                    ],
+                [
+                    'label' => 'Neumática 3 turnos',
+                    'type_label' => 'Neumática',
+                    'promo' => 'Trabajo 3 turnos',
+                    'description' => 'Llanta neumática para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+                    'price' => '$7,800.20 IVA incluido',
+                    'image' => asset('img/chat/neumatica-10-16-5-3-turnos.jpg'),
+                    'image_path' => 'chat/neumatica-10-16-5-3-turnos.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-10-16-5-trabajo-medio-4/',
                 ],
             ],
 
-            'solida' => [
-                '10-16.5' => [
-                    [
-                        'label' => 'Sólida 3 turnos lisa',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Lisa / trabajo severo',
-                        'description' => 'Llanta sólida lisa para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
-                        'price' => '$15,672.91 IVA incluido',
-                        'image' => asset('img/chat/solida-10-16-5-lisa.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-lisa-brawler-hps-ss-sm-a-trelleborg-2/',
-                    ],
-                    [
-                        'label' => 'Sólida 3 turnos',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Brawler HPS',
-                        'description' => 'Llanta sólida para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
-                        'price' => '$9,875.27 IVA incluido',
-                        'image' => asset('img/chat/solida-10-16-5-3-turnos.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-brawler-hps-ss-sf-tr-tft-trelleborg-2/',
-                    ],
-                    [
-                        'label' => 'Sólida con rin',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Ensamble con rin',
-                        'description' => 'Llanta sólida con rin para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
-                        'price' => '$15,672.91 IVA incluido',
-                        'image' => asset('img/chat/solida-10-16-5-con-rin.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-incluye-rin-brawler-hps-ss-sf-tr-a-trelleborg/',
-                    ],
+            '12-16.5' => [
+                [
+                    'label' => 'Neumática 1-2 turnos',
+                    'type_label' => 'Neumática',
+                    'promo' => 'Entrega inmediata',
+                    'description' => 'Llanta neumática para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+                    'price' => '$8,610.46 IVA incluido',
+                    'image' => asset('img/chat/neumatica-12-16-5-1-2-turnos.jpg'),
+                    'image_path' => 'chat/neumatica-12-16-5-1-2-turnos.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-12-16-5-trabajo-pesado-2/',
                 ],
-
-                '12-16.5' => [
-                    [
-                        'label' => 'Sólida 3 turnos',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Brawler HPS',
-                        'description' => 'Llanta sólida para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
-                        'price' => '$15,198.42 IVA incluido',
-                        'image' => asset('img/chat/solida-12-16-5-3-turnos.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-brawler-hps-ss-trelleborg-2/',
-                    ],
-                    [
-                        'label' => 'Sólida 3 turnos con rin',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Ensamble con rin',
-                        'description' => 'Llanta sólida con rin para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
-                        'price' => '$15,198.42 IVA incluido',
-                        'image' => asset('img/chat/solida-12-16-5-3-turnos-con-rin.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-incluye-rin-brawler-hps-ss-tr-a-trelleborg/',
-                    ],
-                    [
-                        'label' => 'Sólida 3 turnos lisa',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Lisa / trabajo severo',
-                        'description' => 'Llanta sólida lisa para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
-                        'price' => '$15,420.84 IVA incluido',
-                        'image' => asset('img/chat/solida-12-16-5-lisa.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-lisa-brawler-hps-ss-sm-trelleborg/',
-                    ],
-                    [
-                        'label' => 'Sólida 3 turnos lisa con rin',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Lisa con rin',
-                        'description' => 'Llanta sólida lisa con rin para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
-                        'price' => '$16,829.48 IVA incluido',
-                        'image' => asset('img/chat/solida-12-16-5-lisa-con-rin.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-incluye-rin-lisa-brawler-hps-ss-sf-sm-a-trelleborg/',
-                    ],
-                    [
-                        'label' => 'Sólida 3 turnos SKS900',
-                        'type_label' => 'Sólida',
-                        'promo' => 'Modelo SKS900',
-                        'description' => 'Llanta sólida SKS900 para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
-                        'price' => '$16,696.02 IVA incluido',
-                        'image' => asset('img/chat/solida-12-16-5-sks900.jpg'),
-                        'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-sks-900-trelleborg/',
-                    ],
+                [
+                    'label' => 'Neumática 3 turnos',
+                    'type_label' => 'Neumática',
+                    'promo' => 'Trabajo 3 turnos',
+                    'description' => 'Llanta neumática para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+                    'price' => '$9,513.43 IVA incluido',
+                    'image' => asset('img/chat/neumatica-12-16-5-3-turnos.jpg'),
+                    'image_path' => 'chat/neumatica-12-16-5-3-turnos.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatico-para-minicargador-12-16-5-trabajo-pesado-2/',
                 ],
             ],
-        ];
-    }
+        ],
+
+        'solida' => [
+            '10-16.5' => [
+                [
+                    'label' => 'Sólida 3 turnos lisa',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Lisa / trabajo severo',
+                    'description' => 'Llanta sólida lisa para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+                    'price' => '$15,672.91 IVA incluido',
+                    'image' => asset('img/chat/solida-10-16-5-lisa.jpg'),
+                    'image_path' => 'chat/solida-10-16-5-lisa.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-lisa-brawler-hps-ss-sm-a-trelleborg-2/',
+                ],
+                [
+                    'label' => 'Sólida 3 turnos',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Brawler HPS',
+                    'description' => 'Llanta sólida para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+                    'price' => '$9,875.27 IVA incluido',
+                    'image' => asset('img/chat/solida-10-16-5-3-turnos.jpg'),
+                    'image_path' => 'chat/solida-10-16-5-3-turnos.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-brawler-hps-ss-sf-tr-tft-trelleborg-2/',
+                ],
+                [
+                    'label' => 'Sólida con rin',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Ensamble con rin',
+                    'description' => 'Llanta sólida con rin para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+                    'price' => '$15,672.91 IVA incluido',
+                    'image' => asset('img/chat/solida-10-16-5-con-rin.jpg'),
+                    'image_path' => 'chat/solida-10-16-5-con-rin.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-incluye-rin-brawler-hps-ss-sf-tr-a-trelleborg/',
+                ],
+            ],
+
+            '12-16.5' => [
+                [
+                    'label' => 'Sólida 3 turnos',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Brawler HPS',
+                    'description' => 'Llanta sólida para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+                    'price' => '$15,198.42 IVA incluido',
+                    'image' => asset('img/chat/solida-12-16-5-3-turnos.jpg'),
+                    'image_path' => 'chat/solida-12-16-5-3-turnos.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-brawler-hps-ss-trelleborg-2/',
+                ],
+                [
+                    'label' => 'Sólida 3 turnos con rin',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Ensamble con rin',
+                    'description' => 'Llanta sólida con rin para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+                    'price' => '$15,198.42 IVA incluido',
+                    'image' => asset('img/chat/solida-12-16-5-3-turnos-con-rin.jpg'),
+                    'image_path' => 'chat/solida-12-16-5-3-turnos-con-rin.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-incluye-rin-brawler-hps-ss-tr-a-trelleborg/',
+                ],
+                [
+                    'label' => 'Sólida 3 turnos lisa',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Lisa / trabajo severo',
+                    'description' => 'Llanta sólida lisa para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+                    'price' => '$15,420.84 IVA incluido',
+                    'image' => asset('img/chat/solida-12-16-5-lisa.jpg'),
+                    'image_path' => 'chat/solida-12-16-5-lisa.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-lisa-brawler-hps-ss-sm-trelleborg/',
+                ],
+                [
+                    'label' => 'Sólida 3 turnos lisa con rin',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Lisa con rin',
+                    'description' => 'Llanta sólida lisa con rin para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+                    'price' => '$16,829.48 IVA incluido',
+                    'image' => asset('img/chat/solida-12-16-5-lisa-con-rin.jpg'),
+                    'image_path' => 'chat/solida-12-16-5-lisa-con-rin.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-incluye-rin-lisa-brawler-hps-ss-sf-sm-a-trelleborg/',
+                ],
+                [
+                    'label' => 'Sólida 3 turnos SKS900',
+                    'type_label' => 'Sólida',
+                    'promo' => 'Modelo SKS900',
+                    'description' => 'Llanta sólida SKS900 para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+                    'price' => '$16,696.02 IVA incluido',
+                    'image' => asset('img/chat/solida-12-16-5-sks900.jpg'),
+                    'image_path' => 'chat/solida-12-16-5-sks900.jpg',
+                    'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-sks-900-trelleborg/',
+                ],
+            ],
+        ],
+    ];
+}
 
     private function minicargadorSharedData(): array
     {

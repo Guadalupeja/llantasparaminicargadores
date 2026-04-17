@@ -3,8 +3,9 @@
 @push('meta')
 @php
     $items = collect($landing['mosaic_items'] ?? [])->values();
-    $carouselSlides = $items->chunk(3);
 
+    $carouselSlidesDesktop = $items->chunk(3);
+    $carouselSlidesMobile = $items->map(fn ($item) => collect([$item]));
 
     $itemListElements = collect($landing['mosaic_items'] ?? [])->values()->map(function ($item, $index) {
         return [
@@ -32,7 +33,9 @@
                     '@type' => 'Organization',
                     'name' => $landing['schema']['manufacturer_name'] ?? 'Trelleborg',
                 ],
-                'image' => $item['image'],
+                'image' => !empty($item['image_path'])
+                    ? asset('storage/originals/' . ltrim($item['image_path'], '/'))
+                    : ($item['image'] ?? null),
             ],
         ];
     })->all();
@@ -150,7 +153,18 @@
 <div class="rgx-landing">
 
     {{-- HERO --}}
-    <section class="rgx-hero" style="background-image:url('{{ asset('storage/originals/' . $landing['hero_image']) }}');">
+    <section class="rgx-hero">
+        <div class="rgx-hero__media">
+            <x-responsive-image
+                :path="$landing['hero_image']"
+                :alt="$landing['title']"
+                class="rgx-hero__img"
+                sizes="100vw"
+                loading="eager"
+                fetchpriority="high"
+            />
+        </div>
+
         <div class="ruguex-container rgx-hero__inner">
             <span class="rgx-badge">{{ $landing['badge'] }}</span>
             <h1 class="rgx-title">{{ $landing['title'] }}</h1>
@@ -171,16 +185,19 @@
     </section>
 
     {{-- CARRUSEL DE PRODUCTOS --}}
-    @if ($carouselSlides->isNotEmpty())
-    <section class="rgx-section rgx-light">
-        <div class="ruguex-container">
-            <h2 class="rgx-h2 rgx-text-center">
-                Compra en línea llantas Bobcat {{ $landing['measure_display'] }}
-            </h2>
-            <p class="rgx-subtitle rgx-text-center">
-                Modelos sólidos y neumáticos Trelleborg disponibles para entrega inmediata.
-            </p>
+{{-- CARRUSEL DE PRODUCTOS --}}
+@if ($items->isNotEmpty())
+<section class="rgx-section rgx-light">
+    <div class="ruguex-container">
+        <h2 class="rgx-h2 rgx-text-center">
+            Compra en línea llantas Bobcat {{ $landing['measure_display'] }}
+        </h2>
+        <p class="rgx-subtitle rgx-text-center">
+            Modelos sólidos y neumáticos Trelleborg disponibles para entrega inmediata.
+        </p>
 
+        {{-- Desktop / Tablet: 3 productos por slide --}}
+        <div class="hidden md:block">
             <div class="rgx-carousel" data-rgx-carousel>
                 <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">
                     ‹
@@ -188,13 +205,22 @@
 
                 <div class="rgx-carousel__viewport">
                     <div class="rgx-carousel__track" data-rgx-track>
-                        @foreach ($carouselSlides as $slide)
+                        @foreach ($carouselSlidesDesktop as $slide)
                             <div class="rgx-carousel__slide">
-                                <div class="rgx-carousel__slide-grid" data-rgx-slide-grid>
+                                <div class="rgx-carousel__slide-grid">
                                     @foreach ($slide as $item)
                                         <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
                                             <div class="rgx-shop-card__image">
-                                                <img src="{{ $item['image'] }}" alt="{{ $item['label'] }}" loading="lazy">
+                                                @if (!empty($item['image_path']))
+                                                    <x-responsive-image
+                                                        :path="$item['image_path']"
+                                                        :alt="$item['label']"
+                                                        class="rgx-shop-card__img"
+                                                        sizes="(min-width: 1100px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                    />
+                                                @else
+                                                    <img src="{{ $item['image'] }}" alt="{{ $item['label'] }}" class="rgx-shop-card__img" loading="lazy" decoding="async">
+                                                @endif
                                             </div>
 
                                             <div class="rgx-shop-card__body">
@@ -221,8 +247,61 @@
                 </button>
             </div>
         </div>
-    </section>
-    @endif
+
+        {{-- Móvil: 1 producto por slide --}}
+        <div class="md:hidden">
+            <div class="rgx-carousel rgx-carousel--mobile" data-rgx-carousel>
+                <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">
+                    ‹
+                </button>
+
+                <div class="rgx-carousel__viewport">
+                    <div class="rgx-carousel__track" data-rgx-track>
+                        @foreach ($carouselSlidesMobile as $slide)
+                            <div class="rgx-carousel__slide">
+                                <div class="rgx-carousel__slide-grid rgx-carousel__slide-grid--single">
+                                    @foreach ($slide as $item)
+                                        <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
+                                            <div class="rgx-shop-card__image">
+                                                @if (!empty($item['image_path']))
+                                                    <x-responsive-image
+                                                        :path="$item['image_path']"
+                                                        :alt="$item['label']"
+                                                        class="rgx-shop-card__img"
+                                                        sizes="100vw"
+                                                    />
+                                                @else
+                                                    <img src="{{ $item['image'] }}" alt="{{ $item['label'] }}" class="rgx-shop-card__img" loading="lazy" decoding="async">
+                                                @endif
+                                            </div>
+
+                                            <div class="rgx-shop-card__body">
+                                                @if (!empty($item['promo']))
+                                                    <span class="rgx-shop-card__promo">{{ $item['promo'] }}</span>
+                                                @endif
+
+                                                <span class="rgx-shop-card__badge">{{ $item['type_label'] }}</span>
+                                                <h3 class="rgx-shop-card__title">{{ $item['label'] }}</h3>
+                                                <p class="rgx-shop-card__text">{{ $item['description'] }}</p>
+                                                <p class="rgx-shop-card__price">{{ $item['price'] }}</p>
+                                                <span class="rgx-shop-card__cta">Ver producto</span>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <button type="button" class="rgx-carousel__nav rgx-carousel__nav--next" data-rgx-next aria-label="Producto siguiente">
+                    ›
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
     {{-- INTRO --}}
     <section class="rgx-section rgx-accent">
@@ -238,7 +317,14 @@
                 </div>
             </div>
 
-            <div class="rgx-cover" style="background-image:url('{{ asset('storage/originals/' . $landing['intro_image']) }}');"></div>
+            <div class="rgx-cover">
+                <x-responsive-image
+                    :path="$landing['intro_image']"
+                    :alt="$landing['intro_title']"
+                    class="rgx-cover__img"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                />
+            </div>
         </div>
     </section>
 
@@ -248,7 +334,14 @@
         <div class="ruguex-container">
             <div class="rgx-bobcat-wrap">
                 <div class="rgx-bobcat-main">
-                    <div class="rgx-bobcat-main__media" style="background-image:url('{{ asset('storage/originals/' . $landing['bobcat_visual_image']) }}');"></div>
+                    <div class="rgx-bobcat-main__media">
+                        <x-responsive-image
+                            :path="$landing['bobcat_visual_image']"
+                            :alt="$landing['bobcat']['title']"
+                            class="rgx-bobcat-main__img"
+                            sizes="(min-width: 1100px) 360px, 100vw"
+                        />
+                    </div>
 
                     <h2 class="rgx-h2">{{ $landing['bobcat']['title'] }}</h2>
                     <p class="rgx-text">{{ $landing['bobcat']['text'] }}</p>
@@ -269,9 +362,9 @@
                 <div class="rgx-bobcat-side">
                     <div class="rgx-card rgx-bobcat-highlight">
                         <h3 class="rgx-h3">¿Qué solución Trelleborg te conviene?</h3>
-                    <p class="rgx-text">
-                        Para esta medida podemos llevar al usuario desde opciones neumáticas reforzadas y para condiciones extremas, como SK-02 y SK-05, hasta soluciones sólidas premium Brawler para trabajo severo. Así cubrimos construcción, residuos, reciclaje, patios de maniobra y superficies duras.
-                    </p>
+                        <p class="rgx-text">
+                            Para esta medida podemos llevar al usuario desde opciones neumáticas reforzadas y para condiciones extremas, como SK-02 y SK-05, hasta soluciones sólidas premium Brawler para trabajo severo. Así cubrimos construcción, residuos, reciclaje, patios de maniobra y superficies duras.
+                        </p>
                     </div>
 
                     @if (!empty($landing['product_families']))
@@ -373,6 +466,15 @@
                 <p class="rgx-text">
                     Te ofrecemos configuraciones Trelleborg que generan confianza desde la búsqueda: Brawler HPS{{ $landing['measure'] === '12-16.5' ? ', SKS900' : '' }} y opciones neumáticas para distintos niveles de exigencia.
                 </p>
+
+                <div class="rgx-modelos-media">
+                    <x-responsive-image
+                        :path="$landing['featured_model_image']"
+                        alt="Llanta para minicargador S550"
+                        class="rgx-modelos-media__img"
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
+                </div>
             </div>
         </div>
     </section>
@@ -451,7 +553,14 @@
                 </div>
             </div>
 
-            <div class="rgx-cover" style="background-image:url('{{ asset('storage/originals/' . $landing['distributor_image']) }}');"></div>
+            <div class="rgx-cover">
+                <x-responsive-image
+                    :path="$landing['distributor_image']"
+                    :alt="$landing['distributor_title']"
+                    class="rgx-cover__img"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                />
+            </div>
         </div>
     </section>
 
@@ -579,6 +688,8 @@ document.addEventListener('DOMContentLoaded', function () {
             target: "#{{ $landing['hubspot_target'] }}"
         });
     }
+
+
 
     document.querySelectorAll('[data-rgx-carousel]').forEach(function (carousel) {
         const track = carousel.querySelector('[data-rgx-track]');

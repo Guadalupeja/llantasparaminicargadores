@@ -108,7 +108,7 @@
 <div
     x-data="ruguexFloatingChat(@js($products), '{{ route('minicargador.lead.store') }}')"
     x-init="init()"
-    class="fixed bottom-5 right-5 z-[9999]"
+    class="fixed bottom-5 right-5 z-[9998]"
 >
     <div
         x-show="!isOpen"
@@ -152,7 +152,7 @@
             class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#8b0000] text-white shadow-[0_12px_35px_rgba(0,0,0,0.35)] transition hover:scale-105"
             aria-label="Abrir chat"
         >
-                <img
+            <img
                 src="{{ asset('img/chat/logo-rgx.png') }}"
                 alt="Ruguex"
                 class="h-full w-full object-cover"
@@ -169,12 +169,12 @@
         x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 scale-95"
-        class="flex h-[620px] w-[360px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-[22px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+        class="flex h-[500px] w-[310px] max-w-[calc(100vw-18px)] flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_18px_46px_rgba(0,0,0,0.30)] sm:h-[520px] sm:w-[320px]"
         style="display: none;"
     >
-        <div class="flex items-center justify-between bg-[#8b0000] px-4 py-4 text-white">
+        <div class="flex items-center justify-between bg-[#8b0000] px-3.5 py-3 text-white">
             <div class="flex items-center gap-3">
-                <div class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-black">
+                <div class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-black">
                     <img
                         src="{{ asset('img/chat/logo-rgx.jpg') }}"
                         alt="Ruguex"
@@ -184,8 +184,8 @@
                 </div>
 
                 <div>
-                    <p class="text-base font-bold leading-none">{{ $title }}</p>
-                    <div class="mt-1 flex items-center gap-2 text-sm text-white/90">
+                    <p class="text-sm font-bold leading-none">{{ $title }}</p>
+                    <div class="mt-1 flex items-center gap-2 text-xs text-white/90">
                         <span class="inline-block h-2.5 w-2.5 rounded-full bg-green-400"></span>
                         <span>En línea</span>
                     </div>
@@ -195,7 +195,7 @@
             <button
                 type="button"
                 @click="closeChat"
-                class="text-3xl leading-none text-white/90 transition hover:text-white"
+                class="text-[28px] leading-none text-white/90 transition hover:text-white"
                 aria-label="Cerrar chat"
             >
                 ×
@@ -204,13 +204,13 @@
 
         <div
             x-ref="messagesContainer"
-            class="flex-1 space-y-4 overflow-y-auto bg-[#f5f5f5] px-4 py-4"
+            class="flex-1 space-y-3 overflow-y-auto bg-[#f5f5f5] px-3 py-3"
         >
             <template x-for="(message, index) in messages" :key="index">
                 <div>
                     <template x-if="message.type === 'bot'">
                         <div class="flex items-end gap-3">
-                            <div class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-black">
+                            <div class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-black">
                                 <img
                                     src="{{ asset('img/chat/logo-rgx.jpg') }}"
                                     alt="Ruguex"
@@ -219,14 +219,14 @@
                                 >
                             </div>
 
-                            <div class="max-w-[82%] rounded-[16px] rounded-bl-md bg-white px-4 py-3 text-slate-800 shadow-sm">
+                            <div class="max-w-[82%] rounded-[14px] rounded-bl-md bg-white px-3.5 py-2.5 text-slate-800 shadow-sm">
                                 <template x-if="message.kind === 'text'">
-                                    <p class="text-[15px] leading-6" x-text="message.text"></p>
+                                    <p class="text-[14px] leading-6" x-text="message.text"></p>
                                 </template>
 
                                 <template x-if="message.kind === 'options'">
                                     <div>
-                                        <p class="text-[15px] leading-6" x-text="message.text"></p>
+                                        <p class="text-[14px] leading-6" x-text="message.text"></p>
 
                                         <div class="mt-3 flex flex-wrap gap-2">
                                             <template x-for="option in message.options" :key="option.value + option.label">
@@ -243,54 +243,54 @@
                                     </div>
                                 </template>
 
-                        <template x-if="message.kind === 'products'">
-                            <div :data-product-block="message.blockId ?? null">
-                                <p class="text-[15px] leading-6" x-text="message.text"></p>
+                                <template x-if="message.kind === 'products'">
+                                    <div :data-product-block="message.blockId ?? null">
+                                        <p class="text-[14px] leading-6" x-text="message.text"></p>
 
-                                <div class="mt-3 space-y-3">
-                                    <template x-for="product in message.products" :key="product.url">
-                                        <a
-                                            :href="product.url"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            class="block overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-[#8b0000] hover:shadow-md"
-                                            @click="trackProductClick(product)"
-                                        >
-                                            <div class="aspect-[4/3] w-full overflow-hidden bg-slate-100">
-                                                <img
-                                                    :src="product.image"
-                                                    :alt="product.label"
-                                                    class="h-full w-full object-cover"
-                                                    loading="lazy"
+                                        <div class="mt-3 space-y-3">
+                                            <template x-for="product in message.products" :key="product.url">
+                                                <a
+                                                    :href="product.url"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="block overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-[#8b0000] hover:shadow-md"
+                                                    @click="trackProductClick(product)"
                                                 >
-                                            </div>
+                                                    <div class="aspect-[4/3] w-full overflow-hidden bg-slate-100">
+                                                        <img
+                                                            :src="product.image"
+                                                            :alt="product.label"
+                                                            class="h-full w-full object-cover"
+                                                            loading="lazy"
+                                                        >
+                                                    </div>
 
-                                            <div class="p-4">
-                                                <p class="text-sm font-bold text-slate-900" x-text="product.label"></p>
+                                                    <div class="p-4">
+                                                        <p class="text-sm font-bold text-slate-900" x-text="product.label"></p>
 
-                                                <p class="mt-2 text-sm leading-6 text-slate-600" x-text="product.description"></p>
+                                                        <p class="mt-2 text-sm leading-6 text-slate-600" x-text="product.description"></p>
 
-                                                <template x-if="product.price">
-                                                    <p class="mt-3 text-sm font-bold text-[#8b0000]" x-text="product.price"></p>
-                                                </template>
+                                                        <template x-if="product.price">
+                                                            <p class="mt-3 text-sm font-bold text-[#8b0000]" x-text="product.price"></p>
+                                                        </template>
 
-                                                <span class="mt-3 inline-flex items-center text-sm font-semibold text-[#8b0000]">
-                                                    Ver producto →
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </template>
-                                </div>
-                            </div>
-                        </template>
+                                                        <span class="mt-3 inline-flex items-center text-sm font-semibold text-[#8b0000]">
+                                                            Ver producto →
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
                             </div>
                         </div>
                     </template>
 
                     <template x-if="message.type === 'user'">
                         <div class="flex justify-end">
-                            <div class="max-w-[78%] rounded-[16px] rounded-br-md bg-[#111827] px-4 py-3 text-white shadow-sm">
-                                <p class="text-[15px] font-medium leading-6" x-text="message.text"></p>
+                            <div class="max-w-[78%] rounded-[14px] rounded-br-md bg-[#111827] px-3.5 py-2.5 text-white shadow-sm">
+                                <p class="text-[14px] font-medium leading-6" x-text="message.text"></p>
                             </div>
                         </div>
                     </template>
@@ -303,41 +303,81 @@
                         RG
                     </div>
 
-                    <div class="w-full max-w-[82%] rounded-[16px] rounded-bl-md bg-white px-4 py-4 shadow-sm">
+                    <div class="w-full max-w-[82%] rounded-[14px] rounded-bl-md bg-white px-3.5 py-3 shadow-sm">
                         <form @submit.prevent="submitLeadForm" class="space-y-3">
                             <div>
                                 <label class="mb-1 block text-sm font-semibold text-slate-700">Nombre</label>
-                                <input x-model="form.nombre" type="text" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-[#8b0000]">
+                                <input
+                                    x-model="form.nombre"
+                                    @input="fieldErrors.nombre = ''; submitErrorMessage = ''"
+                                    type="text"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-[#8b0000]"
+                                >
+                                <template x-if="fieldErrors.nombre">
+                                    <p class="mt-1 text-xs font-medium text-red-600" x-text="fieldErrors.nombre"></p>
+                                </template>
                             </div>
 
                             <div>
                                 <label class="mb-1 block text-sm font-semibold text-slate-700">Empresa</label>
-                                <input x-model="form.empresa" type="text" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-[#8b0000]">
+                                <input
+                                    x-model="form.empresa"
+                                    @input="fieldErrors.empresa = ''; submitErrorMessage = ''"
+                                    type="text"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-[#8b0000]"
+                                >
+                                <template x-if="fieldErrors.empresa">
+                                    <p class="mt-1 text-xs font-medium text-red-600" x-text="fieldErrors.empresa"></p>
+                                </template>
                             </div>
 
                             <div>
                                 <label class="mb-1 block text-sm font-semibold text-slate-700">Tipo de llanta</label>
-                                <input :value="selectedTypeLabelForForm()" type="text" readonly class="w-full rounded-xl border border-slate-200 bg-slate-100 px-4 py-3 text-sm">
+                                <input :value="selectedTypeLabelForForm()" type="text" readonly class="w-full rounded-xl border border-slate-200 bg-slate-100 px-3.5 py-2.5 text-sm">
                             </div>
 
                             <div>
                                 <label class="mb-1 block text-sm font-semibold text-slate-700">Medida</label>
-                                <input :value="selectedMeasureLabelForForm()" type="text" readonly class="w-full rounded-xl border border-slate-200 bg-slate-100 px-4 py-3 text-sm">
+                                <input :value="selectedMeasureLabelForForm()" type="text" readonly class="w-full rounded-xl border border-slate-200 bg-slate-100 px-3.5 py-2.5 text-sm">
                             </div>
 
                             <div>
                                 <label class="mb-1 block text-sm font-semibold text-slate-700">Teléfono</label>
-                                <input x-model="form.telefono" type="text" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-[#8b0000]">
+                                <input
+                                    x-model="form.telefono"
+                                    @input="fieldErrors.telefono = ''; submitErrorMessage = ''"
+                                    type="text"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-[#8b0000]"
+                                >
+                                <template x-if="fieldErrors.telefono">
+                                    <p class="mt-1 text-xs font-medium text-red-600" x-text="fieldErrors.telefono"></p>
+                                </template>
                             </div>
 
                             <div>
                                 <label class="mb-1 block text-sm font-semibold text-slate-700">Correo</label>
-                                <input x-model="form.correo" type="email" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-[#8b0000]">
+                                <input
+                                    x-model="form.correo"
+                                    @input="fieldErrors.correo = ''; submitErrorMessage = ''"
+                                    type="email"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-[#8b0000]"
+                                >
+                                <template x-if="fieldErrors.correo">
+                                    <p class="mt-1 text-xs font-medium text-red-600" x-text="fieldErrors.correo"></p>
+                                </template>
                             </div>
 
                             <div>
                                 <label class="mb-1 block text-sm font-semibold text-slate-700">Mensaje</label>
-                                <textarea x-model="form.mensaje" rows="4" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-[#8b0000]"></textarea>
+                                <textarea
+                                    x-model="form.mensaje"
+                                    @input="fieldErrors.mensaje = ''; submitErrorMessage = ''"
+                                    rows="4"
+                                    class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-[#8b0000]"
+                                ></textarea>
+                                <template x-if="fieldErrors.mensaje">
+                                    <p class="mt-1 text-xs font-medium text-red-600" x-text="fieldErrors.mensaje"></p>
+                                </template>
                             </div>
 
                             <div class="flex flex-wrap gap-3 pt-2">
@@ -372,7 +412,7 @@
                         RG
                     </div>
 
-                    <div class="rounded-[16px] rounded-bl-md bg-white px-4 py-3 shadow-sm">
+                    <div class="rounded-[14px] rounded-bl-md bg-white px-3.5 py-2.5 shadow-sm">
                         <div class="flex items-center gap-1.5">
                             <span class="h-2.5 w-2.5 animate-bounce rounded-full bg-slate-400"></span>
                             <span class="h-2.5 w-2.5 animate-bounce rounded-full bg-slate-400 [animation-delay:0.15s]"></span>
@@ -402,6 +442,7 @@
             leadMode: null,
             isSubmitting: false,
             submitErrorMessage: '',
+            fieldErrors: {},
             isBusinessHours: false,
             form: {
                 nombre: '',
@@ -433,7 +474,9 @@
                 this.selectedMeasure = null;
                 this.showLeadForm = false;
                 this.leadMode = null;
+                this.isSubmitting = false;
                 this.submitErrorMessage = '';
+                this.fieldErrors = {};
                 this.form = {
                     nombre: '',
                     empresa: '',
@@ -482,9 +525,10 @@
                     setTimeout(() => {
                         this.addBotOptions(
                             'Si lo prefieres, también puedo ayudarte a solicitar una cotización o hablar con un especialista.',
-                            this.getFinalActions()
+                            this.getFinalActions(),
+                            false
                         );
-                    }, 250);
+                    }, 400);
 
                     return;
                 }
@@ -512,17 +556,28 @@
                         await this.botReply(() => {
                             this.addBotMessage(
                                 option.value === 'cotizacion'
-                                    ? 'Con gusto. Compárteme tus datos para solicitar tu cotización y un especialista te contactará en breve.'
-                                    : 'Con gusto. Compárteme tus datos y un especialista te contactará en breve.'
+                                    ? 'Completa tus datos para solicitar tu cotización.'
+                                    : 'Completa tus datos y un especialista te contactará en breve.'
                             );
                             this.showLeadForm = true;
+                            this.submitErrorMessage = '';
+                            this.fieldErrors = {};
                         });
 
                         return;
                     }
 
+                    if (option.value === 'retry_form') {
+                        this.showLeadForm = true;
+                        this.submitErrorMessage = '';
+                        this.fieldErrors = {};
+                        this.scrollToBottom();
+                        return;
+                    }
+
                     if (option.value === 'restart') {
                         this.startConversation();
+                        return;
                     }
                 }
             },
@@ -568,7 +623,7 @@
                 this.scrollToBottom();
             },
 
-            addBotOptions(text, options) {
+            addBotOptions(text, options, shouldScroll = true) {
                 this.messages.push({
                     type: 'bot',
                     kind: 'options',
@@ -578,7 +633,10 @@
                         disabled: false,
                     })),
                 });
-                this.scrollToBottom();
+
+                if (shouldScroll) {
+                    this.scrollToBottom();
+                }
             },
 
             addBotProducts(products) {
@@ -649,6 +707,33 @@
 
             async submitLeadForm() {
                 this.submitErrorMessage = '';
+                this.fieldErrors = {};
+
+                const nombre = (this.form.nombre || '').trim();
+                const telefono = (this.form.telefono || '').trim();
+                const correo = (this.form.correo || '').trim();
+                const empresa = (this.form.empresa || '').trim();
+                const mensaje = (this.form.mensaje || '').trim();
+
+                if (!nombre) {
+                    this.fieldErrors.nombre = 'Escribe tu nombre.';
+                }
+
+                if (!telefono) {
+                    this.fieldErrors.telefono = 'Escribe tu teléfono.';
+                }
+
+                if (!correo) {
+                    this.fieldErrors.correo = 'Escribe tu correo.';
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+                    this.fieldErrors.correo = 'Escribe un correo válido.';
+                }
+
+                if (Object.keys(this.fieldErrors).length > 0) {
+                    this.submitErrorMessage = 'Por favor completa los campos obligatorios.';
+                    return;
+                }
+
                 this.isSubmitting = true;
 
                 try {
@@ -658,33 +743,67 @@
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
                             'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
                         },
                         body: JSON.stringify({
-                            nombre: this.form.nombre,
-                            empresa: this.form.empresa,
+                            nombre,
+                            empresa,
                             tipo_llanta: this.selectedTypeLabelForForm(),
                             medida: this.selectedMeasureLabelForForm(),
-                            telefono: this.form.telefono,
-                            correo: this.form.correo,
-                            mensaje: this.form.mensaje,
+                            telefono,
+                            correo,
+                            mensaje,
                             origen: this.leadMode === 'cotizacion'
                                 ? 'Chat minicargadores - Solicitar cotización'
                                 : 'Chat minicargadores - Hablar con un especialista',
                         }),
                     });
 
-                    const data = await response.json();
+                    let data = {};
+                    const contentType = response.headers.get('content-type') || '';
+
+                    if (contentType.includes('application/json')) {
+                        data = await response.json();
+                    } else {
+                        const rawText = await response.text();
+                        throw new Error(rawText || 'La respuesta del servidor no fue válida.');
+                    }
 
                     if (!response.ok) {
-                        throw new Error(data.message || 'No fue posible enviar tu solicitud.');
+                        if (response.status === 422 && data.errors) {
+                            this.fieldErrors = {
+                                nombre: data.errors.nombre?.[0] ?? '',
+                                empresa: data.errors.empresa?.[0] ?? '',
+                                telefono: data.errors.telefono?.[0] ?? '',
+                                correo: data.errors.correo?.[0] ?? '',
+                                mensaje: data.errors.mensaje?.[0] ?? '',
+                            };
+                            this.submitErrorMessage = 'Revisa los campos marcados e inténtalo nuevamente.';
+                            return;
+                        }
+
+                        throw new Error(data.message || data.debug || 'No fue posible enviar tu solicitud.');
                     }
 
                     this.showLeadForm = false;
+                    this.submitErrorMessage = '';
+                    this.fieldErrors = {};
+
+                    this.form = {
+                        nombre: '',
+                        empresa: '',
+                        telefono: '',
+                        correo: '',
+                        mensaje: '',
+                    };
+
+                    const leadModeUsed = this.leadMode;
+                    this.leadMode = null;
 
                     window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({
                         event: 'chat_lead_submit',
-                        lead_type: this.leadMode === 'cotizacion' ? 'cotizacion' : 'especialista',
+                        lead_type: leadModeUsed === 'cotizacion' ? 'cotizacion' : 'especialista',
                         tipo_llanta: this.selectedTypeLabelForForm(),
                         medida: this.selectedMeasureLabelForForm(),
                         source: 'chat_ruguex',
@@ -696,16 +815,15 @@
                             { label: 'Reiniciar', value: 'restart', action: 'final_action' },
                         ]);
                     });
-
-                    this.form = {
-                        nombre: '',
-                        empresa: '',
-                        telefono: '',
-                        correo: '',
-                        mensaje: '',
-                    };
                 } catch (error) {
                     this.submitErrorMessage = error.message || 'Ocurrió un error al enviar la solicitud.';
+
+                    await this.botReply(() => {
+                        this.addBotOptions('No pude completar el envío. ¿Qué deseas hacer?', [
+                            { label: 'Intentar de nuevo', value: 'retry_form', action: 'final_action' },
+                            { label: 'Reiniciar', value: 'restart', action: 'final_action' },
+                        ]);
+                    }, 'bottom');
                 } finally {
                     this.isSubmitting = false;
                 }
@@ -715,6 +833,7 @@
                 this.showLeadForm = false;
                 this.leadMode = null;
                 this.submitErrorMessage = '';
+                this.fieldErrors = {};
             },
 
             isWithinBusinessHours() {
@@ -752,19 +871,19 @@
 
             scrollToProductBlock(blockId) {
                 this.$nextTick(() => {
-                    const container = this.$refs.messagesContainer;
-                    const element = container?.querySelector(`[data-product-block="${blockId}"]`);
+                    setTimeout(() => {
+                        const container = this.$refs.messagesContainer;
+                        const element = container?.querySelector(`[data-product-block="${blockId}"]`);
 
-                    if (container && element) {
-                        const containerRect = container.getBoundingClientRect();
-                        const elementRect = element.getBoundingClientRect();
-                        const relativeTop = elementRect.top - containerRect.top + container.scrollTop;
+                        if (container && element) {
+                            const top = element.offsetTop - 6;
 
-                        container.scrollTo({
-                            top: Math.max(relativeTop - 8, 0),
-                            behavior: 'smooth',
-                        });
-                    }
+                            container.scrollTo({
+                                top: Math.max(top, 0),
+                                behavior: 'smooth',
+                            });
+                        }
+                    }, 80);
                 });
             },
 

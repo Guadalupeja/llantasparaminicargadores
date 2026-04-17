@@ -24,6 +24,9 @@ Route::post('/contacto', [ContactController::class, 'store'])->name('contact.sto
 Route::post('/minicargador/lead', [MinicargadorLeadController::class, 'store'])
     ->name('minicargador.lead.store');
 
+Route::post('/chat-ruguex/lead', [MinicargadorLeadController::class, 'store'])
+    ->name('minicargador.lead.store');
+
 
 Route::get('/llantas-solidas-para-minicargador', [ProductCategoryController::class, 'solid'])
     ->name('categories.solid');

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Mail\MinicargadorLeadMail;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class MinicargadorLeadController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             'nombre' => ['required', 'string', 'max:150'],
@@ -21,13 +23,23 @@ class MinicargadorLeadController extends Controller
             'origen' => ['nullable', 'string', 'max:150'],
         ]);
 
-        Mail::to('bsh@bombasellos.com.mx')->send(
-            new MinicargadorLeadMail($validated)
-        );
+        try {
+            Mail::to('bshgroupcrm@gmail.com')->send(
+                new MinicargadorLeadMail($validated)
+            );
 
-        return response()->json([
-            'ok' => true,
-            'message' => 'Gracias. En breve será contactado por el departamento de ventas.',
-        ]);
+            return response()->json([
+                'ok' => true,
+                'message' => 'Gracias. En breve será contactado por el departamento de ventas.',
+            ]);
+        } catch (Throwable $e) {
+            report($e);
+
+            return response()->json([
+                'ok' => false,
+                'message' => 'No fue posible enviar tu solicitud. Intenta nuevamente.',
+                'debug' => app()->environment('local') ? $e->getMessage() : null,
+            ], 500);
+        }
     }
 }

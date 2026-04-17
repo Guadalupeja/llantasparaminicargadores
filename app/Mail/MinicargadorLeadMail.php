@@ -4,23 +4,44 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class MinicargadorLeadMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public array $lead;
-
-    public function __construct(array $lead)
+    public function __construct(public array $lead)
     {
-        $this->lead = $lead;
     }
 
-    public function build(): self
+    public function envelope(): Envelope
     {
-        return $this
-            ->subject('Nuevo prospecto desde chat de minicargadores')
-            ->view('emails.minicargador-lead');
+        return new Envelope(
+            subject: 'Nuevo prospecto desde chat de minicargadores',
+            replyTo: [
+                new Address(
+                    $this->lead['correo'],
+                    $this->lead['nombre']
+                ),
+            ],
+        );
+    }
+
+    public function content(): Content
+    {
+        return new Content(
+            markdown: 'emails.minicargador-lead',
+            with: [
+                'lead' => $this->lead,
+            ],
+        );
+    }
+
+    public function attachments(): array
+    {
+        return [];
     }
 }
