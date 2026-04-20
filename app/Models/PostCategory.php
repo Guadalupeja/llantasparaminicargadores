@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class PostCategory extends Model
+{
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'seo_title',
+        'seo_description',
+        'status',
+    ];
+
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function getRouteKeyName(): string
+{
+    return 'slug';
+}
+}
