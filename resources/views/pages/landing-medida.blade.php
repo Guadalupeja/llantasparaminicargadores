@@ -138,11 +138,6 @@
 
         return true;
     }));
-
-    $heroPathInfo = pathinfo($landing['hero_image']);
-    $heroDir = ($heroPathInfo['dirname'] ?? '.') !== '.' ? $heroPathInfo['dirname'] . '/' : '';
-    $heroFile = $heroPathInfo['filename'] ?? 'hero';
-    $heroPreload = asset('storage/variants/' . $heroDir . $heroFile . '-768.avif');
 @endphp
 
 @if (!empty($seo['keywords']))
@@ -152,8 +147,6 @@
 <script type="application/ld+json">
 {!! json_encode($structuredData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
 </script>
-
-<link rel="preload" as="image" href="{{ $heroPreload }}" fetchpriority="high">
 @endpush
 
 @section('content')
@@ -167,7 +160,7 @@
                 :alt="$landing['title']"
                 class="rgx-hero__img"
                 sizes="100vw"
-                :lazy="false"
+                loading="eager"
                 fetchpriority="high"
             />
         </div>
@@ -192,122 +185,123 @@
     </section>
 
     {{-- CARRUSEL DE PRODUCTOS --}}
-    @if ($items->isNotEmpty())
-    <section class="rgx-section rgx-light">
-        <div class="ruguex-container">
-            <h2 class="rgx-h2 rgx-text-center">
-                Compra en línea llantas Bobcat {{ $landing['measure_display'] }}
-            </h2>
-            <p class="rgx-subtitle rgx-text-center">
-                Modelos sólidos y neumáticos Trelleborg disponibles para entrega inmediata.
-            </p>
+{{-- CARRUSEL DE PRODUCTOS --}}
+@if ($items->isNotEmpty())
+<section class="rgx-section rgx-light">
+    <div class="ruguex-container">
+        <h2 class="rgx-h2 rgx-text-center">
+            Compra en línea llantas Bobcat {{ $landing['measure_display'] }}
+        </h2>
+        <p class="rgx-subtitle rgx-text-center">
+            Modelos sólidos y neumáticos Trelleborg disponibles para entrega inmediata.
+        </p>
 
-            {{-- Desktop / Tablet: 3 productos por slide --}}
-            <div class="hidden md:block">
-                <div class="rgx-carousel" data-rgx-carousel>
-                    <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">
-                        ‹
-                    </button>
+        {{-- Desktop / Tablet: 3 productos por slide --}}
+        <div class="hidden md:block">
+            <div class="rgx-carousel" data-rgx-carousel>
+                <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">
+                    ‹
+                </button>
 
-                    <div class="rgx-carousel__viewport">
-                        <div class="rgx-carousel__track" data-rgx-track>
-                            @foreach ($carouselSlidesDesktop as $slide)
-                                <div class="rgx-carousel__slide">
-                                    <div class="rgx-carousel__slide-grid">
-                                        @foreach ($slide as $item)
-                                            <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
-                                                <div class="rgx-shop-card__image">
-                                                    @if (!empty($item['image_path']))
-                                                        <x-responsive-image
-                                                            :path="$item['image_path']"
-                                                            :alt="$item['label']"
-                                                            class="rgx-shop-card__img"
-                                                            sizes="(min-width: 1100px) 33vw, (min-width: 768px) 50vw, 100vw"
-                                                        />
-                                                    @else
-                                                        <img src="{{ $item['image'] }}" alt="{{ $item['label'] }}" class="rgx-shop-card__img" loading="lazy" decoding="async">
-                                                    @endif
-                                                </div>
+                <div class="rgx-carousel__viewport">
+                    <div class="rgx-carousel__track" data-rgx-track>
+                        @foreach ($carouselSlidesDesktop as $slide)
+                            <div class="rgx-carousel__slide">
+                                <div class="rgx-carousel__slide-grid">
+                                    @foreach ($slide as $item)
+                                        <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
+                                            <div class="rgx-shop-card__image">
+                                                @if (!empty($item['image_path']))
+                                                    <x-responsive-image
+                                                        :path="$item['image_path']"
+                                                        :alt="$item['label']"
+                                                        class="rgx-shop-card__img"
+                                                        sizes="(min-width: 1100px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                    />
+                                                @else
+                                                    <img src="{{ $item['image'] }}" alt="{{ $item['label'] }}" class="rgx-shop-card__img" loading="lazy" decoding="async">
+                                                @endif
+                                            </div>
 
-                                                <div class="rgx-shop-card__body">
-                                                    @if (!empty($item['promo']))
-                                                        <span class="rgx-shop-card__promo">{{ $item['promo'] }}</span>
-                                                    @endif
+                                            <div class="rgx-shop-card__body">
+                                                @if (!empty($item['promo']))
+                                                    <span class="rgx-shop-card__promo">{{ $item['promo'] }}</span>
+                                                @endif
 
-                                                    <span class="rgx-shop-card__badge">{{ $item['type_label'] }}</span>
-                                                    <h3 class="rgx-shop-card__title">{{ $item['label'] }}</h3>
-                                                    <p class="rgx-shop-card__text">{{ $item['description'] }}</p>
-                                                    <p class="rgx-shop-card__price">{{ $item['price'] }}</p>
-                                                    <span class="rgx-shop-card__cta">Ver producto</span>
-                                                </div>
-                                            </a>
-                                        @endforeach
-                                    </div>
+                                                <span class="rgx-shop-card__badge">{{ $item['type_label'] }}</span>
+                                                <h3 class="rgx-shop-card__title">{{ $item['label'] }}</h3>
+                                                <p class="rgx-shop-card__text">{{ $item['description'] }}</p>
+                                                <p class="rgx-shop-card__price">{{ $item['price'] }}</p>
+                                                <span class="rgx-shop-card__cta">Ver producto</span>
+                                            </div>
+                                        </a>
+                                    @endforeach
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
-
-                    <button type="button" class="rgx-carousel__nav rgx-carousel__nav--next" data-rgx-next aria-label="Producto siguiente">
-                        ›
-                    </button>
                 </div>
-            </div>
 
-            {{-- Móvil: 1 producto por slide --}}
-            <div class="md:hidden">
-                <div class="rgx-carousel rgx-carousel--mobile" data-rgx-carousel>
-                    <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">
-                        ‹
-                    </button>
-
-                    <div class="rgx-carousel__viewport">
-                        <div class="rgx-carousel__track" data-rgx-track>
-                            @foreach ($carouselSlidesMobile as $slide)
-                                <div class="rgx-carousel__slide">
-                                    <div class="rgx-carousel__slide-grid rgx-carousel__slide-grid--single">
-                                        @foreach ($slide as $item)
-                                            <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
-                                                <div class="rgx-shop-card__image">
-                                                    @if (!empty($item['image_path']))
-                                                        <x-responsive-image
-                                                            :path="$item['image_path']"
-                                                            :alt="$item['label']"
-                                                            class="rgx-shop-card__img"
-                                                            sizes="100vw"
-                                                        />
-                                                    @else
-                                                        <img src="{{ $item['image'] }}" alt="{{ $item['label'] }}" class="rgx-shop-card__img" loading="lazy" decoding="async">
-                                                    @endif
-                                                </div>
-
-                                                <div class="rgx-shop-card__body">
-                                                    @if (!empty($item['promo']))
-                                                        <span class="rgx-shop-card__promo">{{ $item['promo'] }}</span>
-                                                    @endif
-
-                                                    <span class="rgx-shop-card__badge">{{ $item['type_label'] }}</span>
-                                                    <h3 class="rgx-shop-card__title">{{ $item['label'] }}</h3>
-                                                    <p class="rgx-shop-card__text">{{ $item['description'] }}</p>
-                                                    <p class="rgx-shop-card__price">{{ $item['price'] }}</p>
-                                                    <span class="rgx-shop-card__cta">Ver producto</span>
-                                                </div>
-                                            </a>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <button type="button" class="rgx-carousel__nav rgx-carousel__nav--next" data-rgx-next aria-label="Producto siguiente">
-                        ›
-                    </button>
-                </div>
+                <button type="button" class="rgx-carousel__nav rgx-carousel__nav--next" data-rgx-next aria-label="Producto siguiente">
+                    ›
+                </button>
             </div>
         </div>
-    </section>
-    @endif
+
+        {{-- Móvil: 1 producto por slide --}}
+        <div class="md:hidden">
+            <div class="rgx-carousel rgx-carousel--mobile" data-rgx-carousel>
+                <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">
+                    ‹
+                </button>
+
+                <div class="rgx-carousel__viewport">
+                    <div class="rgx-carousel__track" data-rgx-track>
+                        @foreach ($carouselSlidesMobile as $slide)
+                            <div class="rgx-carousel__slide">
+                                <div class="rgx-carousel__slide-grid rgx-carousel__slide-grid--single">
+                                    @foreach ($slide as $item)
+                                        <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
+                                            <div class="rgx-shop-card__image">
+                                                @if (!empty($item['image_path']))
+                                                    <x-responsive-image
+                                                        :path="$item['image_path']"
+                                                        :alt="$item['label']"
+                                                        class="rgx-shop-card__img"
+                                                        sizes="100vw"
+                                                    />
+                                                @else
+                                                    <img src="{{ $item['image'] }}" alt="{{ $item['label'] }}" class="rgx-shop-card__img" loading="lazy" decoding="async">
+                                                @endif
+                                            </div>
+
+                                            <div class="rgx-shop-card__body">
+                                                @if (!empty($item['promo']))
+                                                    <span class="rgx-shop-card__promo">{{ $item['promo'] }}</span>
+                                                @endif
+
+                                                <span class="rgx-shop-card__badge">{{ $item['type_label'] }}</span>
+                                                <h3 class="rgx-shop-card__title">{{ $item['label'] }}</h3>
+                                                <p class="rgx-shop-card__text">{{ $item['description'] }}</p>
+                                                <p class="rgx-shop-card__price">{{ $item['price'] }}</p>
+                                                <span class="rgx-shop-card__cta">Ver producto</span>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <button type="button" class="rgx-carousel__nav rgx-carousel__nav--next" data-rgx-next aria-label="Producto siguiente">
+                    ›
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
     {{-- INTRO --}}
     <section class="rgx-section rgx-accent">
@@ -660,11 +654,7 @@
                     Te ayudamos a elegir la mejor opción Trelleborg para tu operación: sólida o neumática.
                 </p>
 
-                <div id="{{ $landing['hubspot_target'] }}">
-                    <div class="min-h-[260px] flex items-center justify-center text-white/80">
-                        Cargando formulario...
-                    </div>
-                </div>
+                <div id="{{ $landing['hubspot_target'] }}"></div>
             </div>
         </div>
     </section>
@@ -703,8 +693,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (formCreated || !window.hbspt?.forms?.create || !formTarget) return;
 
         formCreated = true;
-        formTarget.innerHTML = '';
-
         window.hbspt.forms.create({
             region: "na1",
             portalId: "7547674",
