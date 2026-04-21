@@ -171,7 +171,11 @@
                 Llantas para minicargadores
             </h1>
 
-            <a href="{{ url('/#contacto') }}" class="ruguex-btn mt-8 sm:mt-10">
+            <a
+                href="{{ url('/#contacto') }}"
+                class="ruguex-btn mt-8 sm:mt-10"
+                data-load-hubspot
+            >
                 Cotiza ahora
             </a>
         </div>
@@ -524,58 +528,88 @@
 @endsection
 
 @push('scripts')
-    <script>
-        (() => {
-            const formContainer = document.querySelector('#hs-form-contacto-ruguex');
-            if (!formContainer) return;
+<script>
+(() => {
+    const formContainer = document.querySelector('#hs-form-contacto-ruguex');
+    if (!formContainer) return;
 
-            let loaded = false;
+    const triggerButtons = document.querySelectorAll('[data-load-hubspot]');
+    let loaded = false;
+    let loading = false;
+    let observer = null;
 
-            const initHubSpotForm = () => {
-                if (loaded) return;
-                loaded = true;
+    const createForm = () => {
+        if (
+            window.hbspt &&
+            window.hbspt.forms &&
+            typeof window.hbspt.forms.create === 'function' &&
+            !formContainer.querySelector('.hbspt-form')
+        ) {
+            formContainer.innerHTML = '';
 
-                const script = document.createElement('script');
-                script.src = 'https://js.hsforms.net/forms/shell.js';
-                script.async = true;
-                script.defer = true;
+            window.hbspt.forms.create({
+                region: 'na1',
+                portalId: '7547674',
+                formId: 'f8177bc5-6a7b-4364-92a4-1731bef2ecdd',
+                target: '#hs-form-contacto-ruguex'
+            });
+        }
+    };
 
-                script.onload = () => {
-                    if (
-                        window.hbspt &&
-                        window.hbspt.forms &&
-                        typeof window.hbspt.forms.create === 'function' &&
-                        !formContainer.querySelector('.hbspt-form')
-                    ) {
-                        formContainer.innerHTML = '';
-                        window.hbspt.forms.create({
-                            region: 'na1',
-                            portalId: '7547674',
-                            formId: 'f8177bc5-6a7b-4364-92a4-1731bef2ecdd',
-                            target: '#hs-form-contacto-ruguex'
-                        });
-                    }
-                };
+    const loadHubSpot = () => {
+        if (loaded || loading) return;
 
-                document.body.appendChild(script);
-            };
+        if (window.hbspt?.forms?.create) {
+            loaded = true;
+            createForm();
+            if (observer) observer.disconnect();
+            return;
+        }
 
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            initHubSpotForm();
-                            observer.disconnect();
-                        }
-                    });
-                }, {
-                    rootMargin: '300px 0px'
-                });
+        loading = true;
 
-                observer.observe(formContainer);
-            } else {
-                window.addEventListener('load', initHubSpotForm, { once: true });
-            }
-        })();
-    </script>
+        const script = document.createElement('script');
+        script.src = 'https://js.hsforms.net/forms/shell.js';
+        script.async = true;
+        script.defer = true;
+
+        script.onload = () => {
+            loaded = true;
+            loading = false;
+            createForm();
+            if (observer) observer.disconnect();
+        };
+
+        script.onerror = () => {
+            loading = false;
+        };
+
+        document.body.appendChild(script);
+    };
+
+    triggerButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            loadHubSpot();
+        }, { passive: true });
+    });
+
+    if ('IntersectionObserver' in window) {
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    loadHubSpot();
+                }
+            });
+        }, {
+            rootMargin: '100px 0px'
+        });
+
+        observer.observe(formContainer);
+    } else {
+        window.addEventListener('load', () => {
+            setTimeout(loadHubSpot, 3000);
+        }, { once: true });
+    }
+})();
+</script>
 @endpush
