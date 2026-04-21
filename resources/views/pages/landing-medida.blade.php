@@ -677,11 +677,23 @@
 @endsection
 
 @push('scripts')
-<script src="//js.hsforms.net/forms/shell.js" charset="utf-8"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    if (window.hbspt) {
-        hbspt.forms.create({
+    const formTarget = document.querySelector('#{{ $landing['hubspot_target'] }}');
+    const cotizacionSection = document.querySelector('#cotizacion');
+    const ctaButtons = document.querySelectorAll('a[href="#cotizacion"]');
+
+    let hubspotLoaded = false;
+    let hubspotLoading = false;
+    let formCreated = false;
+    let cotizacionObserver = null;
+    let carouselObserver = null;
+
+    function createHubspotForm() {
+        if (formCreated || !window.hbspt?.forms?.create || !formTarget) return;
+
+        formCreated = true;
+        window.hbspt.forms.create({
             region: "na1",
             portalId: "7547674",
             formId: "f8177bc5-6a7b-4364-92a4-1731bef2ecdd",
@@ -689,9 +701,62 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function loadHubspot() {
+        if (hubspotLoaded) {
+            createHubspotForm();
+            return;
+        }
 
+        if (hubspotLoading) return;
+        hubspotLoading = true;
 
-    document.querySelectorAll('[data-rgx-carousel]').forEach(function (carousel) {
+        const script = document.createElement('script');
+        script.src = 'https://js.hsforms.net/forms/shell.js';
+        script.async = true;
+        script.defer = true;
+
+        script.onload = function () {
+            hubspotLoaded = true;
+            hubspotLoading = false;
+            createHubspotForm();
+            if (cotizacionObserver) cotizacionObserver.disconnect();
+        };
+
+        script.onerror = function () {
+            hubspotLoading = false;
+        };
+
+        document.body.appendChild(script);
+    }
+
+    ctaButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+            loadHubspot();
+        }, { passive: true });
+    });
+
+    if ('IntersectionObserver' in window && cotizacionSection) {
+        cotizacionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    loadHubspot();
+                }
+            });
+        }, {
+            rootMargin: '200px 0px'
+        });
+
+        cotizacionObserver.observe(cotizacionSection);
+    } else {
+        window.addEventListener('load', function () {
+            setTimeout(loadHubspot, 3500);
+        }, { once: true });
+    }
+
+    function initCarousel(carousel) {
+        if (carousel.dataset.rgxInitialized === 'true') return;
+        carousel.dataset.rgxInitialized = 'true';
+
         const track = carousel.querySelector('[data-rgx-track]');
         const prevBtn = carousel.querySelector('[data-rgx-prev]');
         const nextBtn = carousel.querySelector('[data-rgx-next]');
@@ -786,7 +851,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         updateCarousel(false);
         startAutoPlay();
-    });
+    }
+
+    const carousels = document.querySelectorAll('[data-rgx-carousel]');
+
+    if ('IntersectionObserver' in window && carousels.length) {
+        carouselObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    initCarousel(entry.target);
+                    carouselObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '150px 0px'
+        });
+
+        carousels.forEach((carousel) => carouselObserver.observe(carousel));
+    } else {
+        carousels.forEach(initCarousel);
+    }
 });
 </script>
 @endpush
