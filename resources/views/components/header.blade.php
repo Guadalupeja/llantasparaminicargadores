@@ -279,29 +279,53 @@
                             </div>
                         </div>
 
-                        <div class="mt-2 rounded-xl border border-white/10 bg-white/[0.03]">
-                            <button
-                                type="button"
-                                class="flex w-full items-center justify-between px-4 py-3 text-left text-[15px] font-medium text-white"
-                                data-submenu-toggle
-                                aria-expanded="false"
-                            >
-                                <span>Por máquina</span>
-                                <span class="text-lg leading-none text-[#e76a3e]">+</span>
-                            </button>
+                       <div class="mt-2 rounded-xl border border-white/10 bg-white/[0.03]">
+                    <button
+                        type="button"
+                        class="flex w-full items-center justify-between px-4 py-3 text-left text-[15px] font-medium text-white"
+                        data-submenu-toggle
+                        aria-expanded="false"
+                    >
+                        <span>Por máquina</span>
+                        <span class="text-lg leading-none text-[#e76a3e]">+</span>
+                    </button>
 
-                            <div class="hidden px-2 pb-2" data-submenu>
-                                <div class="space-y-1 border-t border-white/10 pt-2">
-                                    <a href="https://llantasbobcat.com/" target="_blank" rel="noopener noreferrer" class="block rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white">
-                                        Bobcat
-                                    </a>
-                                </div>
-                            </div>
+                    <div class="hidden px-2 pb-2" data-submenu>
+                        <div class="space-y-1 border-t border-white/10 pt-2">
+                            <a href="https://llantasbobcat.com/" target="_blank" rel="noopener noreferrer" class="block rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white">
+                                Bobcat
+                            </a>
                         </div>
+                    </div>
+                </div>
 
-                        <a href="{{ url('/contacto') }}" class="mt-2 rounded-xl px-4 py-3 text-[15px] font-medium text-white transition hover:bg-white/5 hover:text-[#e76a3e]">
-                            Contacto
-                        </a>
+                <div class="mt-2 rounded-xl border border-white/10 bg-white/[0.03]">
+                    <button
+                        type="button"
+                        class="flex w-full items-center justify-between px-4 py-3 text-left text-[15px] font-medium text-white"
+                        data-submenu-toggle
+                        aria-expanded="false"
+                    >
+                        <span>Por medida</span>
+                        <span class="text-lg leading-none text-[#e76a3e]">+</span>
+                    </button>
+
+                    <div class="hidden px-2 pb-2" data-submenu>
+                        <div class="space-y-1 border-t border-white/10 pt-2">
+                            <a href="{{ url('/llanta-10-16-5') }}" class="block rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white">
+                                Llanta 10-16.5
+                            </a>
+
+                            <a href="{{ url('/llanta-12-16-5') }}" class="block rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white">
+                                Llanta 12-16.5
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{{ url('/contacto') }}" class="mt-2 rounded-xl px-4 py-3 text-[15px] font-medium text-white transition hover:bg-white/5 hover:text-[#e76a3e]">
+                    Contacto
+                </a>
 
                         {{-- Bloque móvil visual inferior --}}
                         <div class="mt-4 rounded-xl border border-white/10 bg-gradient-to-r from-white/[0.04] to-white/[0.02] p-4">
