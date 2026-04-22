@@ -76,8 +76,8 @@ public function landing12165(): View
     );
 
     $seo = [
-        'title' => 'Llantas Bobcat 12-16.5 | Trelleborg | Ruguex',
-        'description' => 'Llantas Bobcat 12-16.5 y 33x12-20/7.5 para minicargador. Trelleborg Brawler, SK y SKS, con rin, montaje y entrega inmediata.',
+        'title' => 'Llantas para minicargador Bobcat 12-16.5 Trelleborg | Ruguex',
+        'description' => 'Llantas para minicargadores Bobcat 12-16.5 y 33x12-20/7.5. Trelleborg Brawler y SK, con rin, montaje y entrega inmediata a todo México, precios mayoristas.',
         'canonical' => url('/llanta-12-16-5'),
         'robots' => 'index,follow',
         'image' => asset('storage/originals/landings/12-16-5/hero-12-16-5.png'),
@@ -342,8 +342,8 @@ public function landing12165(): View
     );
 
     $seo = [
-        'title' => 'Llantas Bobcat 10-16.5 | Trelleborg | Ruguex',
-        'description' => 'Llantas Bobcat 10-16.5 y 31x10-20/7.5 para minicargador. Trelleborg Brawler y SK, con rin, montaje y entrega inmediata.',
+        'title' => 'Llantas para minicargador Bobcat 10-16.5 Trelleborg | Ruguex',
+        'description' => 'Llantas para minicargadores Bobcat 10-16.5 y 31x10-20/7.5. Trelleborg Brawler y SK, con rin, montaje y entrega inmediata a todo México, precios mayoristas.',
         'canonical' => url('/llanta-10-16-5'),
         'robots' => 'index,follow',
         'image' => asset('storage/originals/landings/10-16-5/hero-10-16-5.png'),

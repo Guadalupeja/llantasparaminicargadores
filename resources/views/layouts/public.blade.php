@@ -20,7 +20,11 @@
 
     <title>{{ $seoTitle }}</title>
     <meta name="description" content="{{ $seoDescription }}">
-    <meta name="robots" content="{{ $seoRobots }}">
+    @php
+    $isStagingHost = request()->getHost() === 'prueba.llantasparaminicargadores.com';
+@endphp
+
+<meta name="robots" content="{{ $isStagingHost ? 'noindex,nofollow,noarchive,nosnippet' : $seoRobots }}">
     <link rel="canonical" href="{{ $seoCanonical }}">
 
     <meta property="og:locale" content="es_MX">
