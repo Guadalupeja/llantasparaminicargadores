@@ -92,6 +92,16 @@
         ];
     @endphp
 
+    @php
+    $heroPreload = $product->hero_image
+        ? asset('storage/' . ltrim($product->hero_image, '/'))
+        : null;
+@endphp
+
+@if ($heroPreload)
+    <link rel="preload" as="image" href="{{ $heroPreload }}" fetchpriority="high">
+@endif
+
     <script type="application/ld+json">
         {!! json_encode($productStructuredData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
@@ -158,6 +168,10 @@
                         :alt="$product->name"
                         class="h-auto w-full max-w-[220px] object-contain sm:max-w-[280px] md:max-w-[320px] lg:max-w-[350px]"
                         sizes="(min-width: 1024px) 350px, (min-width: 768px) 320px, (min-width: 640px) 280px, 220px"
+                        :lazy="false"
+                        fetchpriority="high"
+                        width="350"
+                        height="350"
                     />
                 @endif
             </div>
