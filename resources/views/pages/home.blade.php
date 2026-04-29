@@ -149,81 +149,227 @@
 @endpush
 
 @section('content')
+
+@php
+    $homeItems = collect([
+        [
+            'label' => 'Neumática 10-16.5 1-2 turnos',
+            'type_label' => 'Neumática',
+            'promo' => 'Entrega inmediata',
+            'description' => 'Llanta neumática para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+            'price' => '$6,425.35 IVA incluido',
+            'image_path' => 'chat/neumatica-10-16-5-1-2-turnos.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-10-16-5-trabajo-medio-6/',
+        ],
+        [
+            'label' => 'Neumática 10-16.5 3 turnos',
+            'type_label' => 'Neumática',
+            'promo' => 'Trabajo 3 turnos',
+            'description' => 'Llanta neumática para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+            'price' => '$7,800.20 IVA incluido',
+            'image_path' => 'chat/neumatica-10-16-5-3-turnos.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-10-16-5-trabajo-medio-4/',
+        ],
+        [
+            'label' => 'Sólida 10-16.5 3 turnos',
+            'type_label' => 'Sólida',
+            'promo' => 'Brawler HPS',
+            'description' => 'Llanta sólida para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+            'price' => '$9,875.27 IVA incluido',
+            'image_path' => 'chat/solida-10-16-5-3-turnos.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-brawler-hps-ss-sf-tr-tft-trelleborg-2/',
+        ],
+        [
+            'label' => 'Sólida 10-16.5 con rin',
+            'type_label' => 'Sólida',
+            'promo' => 'Ensamble con rin',
+            'description' => 'Llanta sólida con rin para minicargador Bobcat 10-16.5. Disponible para compra en línea.',
+            'price' => '$15,672.91 IVA incluido',
+            'image_path' => 'chat/solida-10-16-5-con-rin.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-10-16-5-trabajo-pesado-incluye-rin-brawler-hps-ss-sf-tr-a-trelleborg/',
+        ],
+        [
+            'label' => 'Neumática 12-16.5 1-2 turnos',
+            'type_label' => 'Neumática',
+            'promo' => 'Entrega inmediata',
+            'description' => 'Llanta neumática para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+            'price' => '$8,610.46 IVA incluido',
+            'image_path' => 'chat/neumatica-12-16-5-1-2-turnos.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatica-para-minicargador-12-16-5-trabajo-pesado-2/',
+        ],
+        [
+            'label' => 'Neumática 12-16.5 3 turnos',
+            'type_label' => 'Neumática',
+            'promo' => 'Trabajo 3 turnos',
+            'description' => 'Llanta neumática para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+            'price' => '$9,513.43 IVA incluido',
+            'image_path' => 'chat/neumatica-12-16-5-3-turnos.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-neumatico-para-minicargador-12-16-5-trabajo-pesado-2/',
+        ],
+        [
+            'label' => 'Sólida 12-16.5 3 turnos',
+            'type_label' => 'Sólida',
+            'promo' => 'Brawler HPS',
+            'description' => 'Llanta sólida para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+            'price' => '$15,198.42 IVA incluido',
+            'image_path' => 'chat/solida-12-16-5-3-turnos.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-brawler-hps-ss-trelleborg-2/',
+        ],
+        [
+            'label' => 'Sólida 12-16.5 con rin',
+            'type_label' => 'Sólida',
+            'promo' => 'Ensamble con rin',
+            'description' => 'Llanta sólida con rin para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+            'price' => '$15,198.42 IVA incluido',
+            'image_path' => 'chat/solida-12-16-5-3-turnos-con-rin.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-incluye-rin-brawler-hps-ss-tr-a-trelleborg/',
+        ],
+        [
+            'label' => 'Sólida 12-16.5 SKS900',
+            'type_label' => 'Sólida',
+            'promo' => 'Modelo SKS900',
+            'description' => 'Llanta sólida SKS900 para minicargador Bobcat 12-16.5. Disponible para compra en línea.',
+            'price' => '$16,696.02 IVA incluido',
+            'image_path' => 'chat/solida-12-16-5-sks900.jpg',
+            'url' => 'https://llantasdemontacargas.com/tienda-en-linea/producto/llanta-solida-para-minicargador-12-16-5-trabajo-pesado-sks-900-trelleborg/',
+        ],
+    ]);
+
+    $homeCarouselSlidesDesktop = $homeItems->chunk(3);
+    $homeCarouselSlidesMobile = $homeItems->map(fn ($item) => collect([$item]));
+@endphp
+
+
     {{-- Hero principal --}}
-    <section class="relative overflow-hidden bg-black">
-        <div class="absolute inset-0">
-            <img
-                src="{{ asset('storage/originals/home/hero-bobcat.jpg') }}"
-                alt="Llantas para minicargadores Ruguex"
-                class="h-full w-full object-cover object-center"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-                width="1600"
-                height="900"
-            >
-        </div>
+{{-- Hero principal dividido --}}
+<section class="relative overflow-hidden bg-black">
+    <div class="grid min-h-[620px] grid-cols-1">
 
-        <div class="absolute inset-0 bg-black/55"></div>
-
-        <div class="relative ruguex-container flex min-h-[250px] flex-col items-center justify-center px-4 py-14 text-center sm:min-h-[280px] sm:py-16 md:min-h-[320px] lg:min-h-[300px]">
-            <h1 class="text-balance text-[28px] font-extrabold leading-tight text-white md:text-[32px]">
-                Llantas para minicargadores
-            </h1>
-
-            <a
-                href="{{ url('/#contacto') }}"
-                class="ruguex-btn mt-8 sm:mt-10"
-                data-load-hubspot
-            >
-                Cotiza ahora
-            </a>
-        </div>
-    </section>
-
-    {{-- Franja naranja --}}
-    <section class="bg-[#e76a3e]">
-        <div class="ruguex-container grid items-center gap-8 py-8 md:grid-cols-3 md:py-10">
-            <div class="text-center text-[28px] font-extrabold leading-tight text-black sm:text-[30px] md:text-[32px] lg:text-[38px]">
-                25% más de
-                <span
-                    id="rotating-word"
-                    class="inline-block min-w-[150px] text-center transition-all duration-500 sm:min-w-[190px]"
+        {{-- Mitad izquierda: hero original --}}
+        <div class="relative flex min-h-[220px] items-center justify-center overflow-hidden lg:min-h-[200px]">
+            <div class="absolute inset-0">
+                <img
+                    src="{{ asset('storage/originals/home/hero-bobcat.jpg') }}"
+                    alt="Llantas para minicargadores Ruguex"
+                    class="h-full w-full object-cover object-center"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                    width="1600"
+                    height="900"
                 >
-                    Vida
-                </span>
-                <br>
-                GARANTIZADO.
             </div>
 
-            <div class="bg-black p-5 text-center">
-                <a
-                    href="https://llantasdemontacargas.com/tienda-en-linea/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-[20px] font-bold leading-tight text-white underline underline-offset-4 md:text-[28px] lg:text-[30px]"
-                >
-                    ¡Compra en Línea Aquí!
+            <div class="absolute inset-0 bg-black/55"></div>
+
+            <div class="relative z-10 flex flex-col items-center justify-center px-4 py-14 text-center">
+                <h1 class="text-balance text-[28px] font-extrabold leading-tight text-white md:text-[36px]">
+                    Llantas para minicargadores
+                </h1>
+
+                <a href="{{ url('/#contacto') }}" class="ruguex-btn mt-8 sm:mt-10" data-load-hubspot>
+                    Cotiza ahora
                 </a>
             </div>
-
-            <a
-                href="https://llantasbobcat.com/"
-                class="flex flex-col items-center justify-center transition-opacity duration-300 hover:opacity-85"
-            >
-                <x-responsive-image
-                    path="home/bobcat-logo.png"
-                    alt="Bobcat"
-                    class="h-auto w-[150px] sm:w-[190px] lg:w-[300px]"
-                    sizes="(min-width: 1024px) 300px, (min-width: 640px) 190px, 150px"
-                />
-
-                <p class="mt-3 text-center text-[20px] font-bold leading-none text-black lg:text-[30px]">
-                    Llantas Bobcat
-                </p>
-            </a>
         </div>
-    </section>
+
+        {{-- Mitad derecha: carrusel de productos --}}
+        <div class="relative flex min-h-[520px] items-center bg-[#f5f5f5] px-3 py-8 sm:px-5 lg:min-h-[620px] lg:px-6">
+            <div class="w-full">
+                <div class="mx-auto mb-5 max-w-[620px] text-center">
+                    <h2 class="rgx-h2 rgx-text-center">
+                        Compra en línea llantas Bobcat
+                    </h2>
+
+                    <p class="rgx-subtitle rgx-text-center">
+                        Modelos sólidos y neumáticos Trelleborg disponibles para entrega inmediata.
+                    </p>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="rgx-carousel" data-rgx-carousel>
+                        <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">‹</button>
+
+                        <div class="rgx-carousel__viewport">
+                            <div class="rgx-carousel__track" data-rgx-track>
+                                @foreach ($homeCarouselSlidesDesktop as $slide)
+                                    <div class="rgx-carousel__slide">
+                                        <div class="rgx-carousel__slide-grid">
+                                            @foreach ($slide as $item)
+                                                <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
+                                                    <div class="rgx-shop-card__image">
+                                                        <x-responsive-image
+                                                            :path="$item['image_path']"
+                                                            :alt="$item['label']"
+                                                            class="rgx-shop-card__img"
+                                                            sizes="(min-width: 1100px) 16vw, (min-width: 768px) 33vw, 100vw"
+                                                        />
+                                                    </div>
+
+                                                    <div class="rgx-shop-card__body">
+                                                        <span class="rgx-shop-card__promo">{{ $item['promo'] }}</span>
+                                                        <span class="rgx-shop-card__badge">{{ $item['type_label'] }}</span>
+                                                        <h3 class="rgx-shop-card__title">{{ $item['label'] }}</h3>
+                                                        <p class="rgx-shop-card__text">{{ $item['description'] }}</p>
+                                                        <p class="rgx-shop-card__price">{{ $item['price'] }}</p>
+                                                        <span class="rgx-shop-card__cta">Ver producto</span>
+                                                    </div>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <button type="button" class="rgx-carousel__nav rgx-carousel__nav--next" data-rgx-next aria-label="Producto siguiente">›</button>
+                    </div>
+                </div>
+
+                <div class="md:hidden">
+                    <div class="rgx-carousel rgx-carousel--mobile" data-rgx-carousel>
+                        <button type="button" class="rgx-carousel__nav rgx-carousel__nav--prev" data-rgx-prev aria-label="Producto anterior">‹</button>
+
+                        <div class="rgx-carousel__viewport">
+                            <div class="rgx-carousel__track" data-rgx-track>
+                                @foreach ($homeCarouselSlidesMobile as $slide)
+                                    <div class="rgx-carousel__slide">
+                                        <div class="rgx-carousel__slide-grid rgx-carousel__slide-grid--single">
+                                            @foreach ($slide as $item)
+                                                <a href="{{ $item['url'] }}" target="_blank" rel="noopener" class="rgx-shop-card rgx-shop-card--single">
+                                                    <div class="rgx-shop-card__image">
+                                                        <x-responsive-image
+                                                            :path="$item['image_path']"
+                                                            :alt="$item['label']"
+                                                            class="rgx-shop-card__img"
+                                                            sizes="100vw"
+                                                        />
+                                                    </div>
+
+                                                    <div class="rgx-shop-card__body">
+                                                        <span class="rgx-shop-card__promo">{{ $item['promo'] }}</span>
+                                                        <span class="rgx-shop-card__badge">{{ $item['type_label'] }}</span>
+                                                        <h3 class="rgx-shop-card__title">{{ $item['label'] }}</h3>
+                                                        <p class="rgx-shop-card__text">{{ $item['description'] }}</p>
+                                                        <p class="rgx-shop-card__price">{{ $item['price'] }}</p>
+                                                        <span class="rgx-shop-card__cta">Ver producto</span>
+                                                    </div>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <button type="button" class="rgx-carousel__nav rgx-carousel__nav--next" data-rgx-next aria-label="Producto siguiente">›</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     {{-- Categorías --}}
     <section class="bg-black cv-auto">
@@ -401,6 +547,52 @@
             </div>
         </div>
     </section>
+
+
+    {{-- Franja naranja --}}
+    <section class="bg-[#e76a3e]">
+        <div class="ruguex-container grid items-center gap-8 py-8 md:grid-cols-3 md:py-10">
+            <div class="text-center text-[28px] font-extrabold leading-tight text-black sm:text-[30px] md:text-[32px] lg:text-[38px]">
+                25% más de
+                <span
+                    id="rotating-word"
+                    class="inline-block min-w-[150px] text-center transition-all duration-500 sm:min-w-[190px]"
+                >
+                    Vida
+                </span>
+                <br>
+                GARANTIZADO.
+            </div>
+
+            <div class="bg-black p-5 text-center">
+                <a
+                    href="https://llantasdemontacargas.com/tienda-en-linea/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[20px] font-bold leading-tight text-white underline underline-offset-4 md:text-[28px] lg:text-[30px]"
+                >
+                    ¡Compra en Línea Aquí!
+                </a>
+            </div>
+
+            <a
+                href="https://llantasbobcat.com/"
+                class="flex flex-col items-center justify-center transition-opacity duration-300 hover:opacity-85"
+            >
+                <x-responsive-image
+                    path="home/bobcat-logo.png"
+                    alt="Bobcat"
+                    class="h-auto w-[150px] sm:w-[190px] lg:w-[300px]"
+                    sizes="(min-width: 1024px) 300px, (min-width: 640px) 190px, 150px"
+                />
+
+                <p class="mt-3 text-center text-[20px] font-bold leading-none text-black lg:text-[30px]">
+                    Llantas Bobcat
+                </p>
+            </a>
+        </div>
+    </section>
+
 
     {{-- Franja distribuidor --}}
     <section class="relative block bg-black transition-[background,border,border-radius,box-shadow] duration-300 cv-auto">
@@ -612,4 +804,109 @@
     }
 })();
 </script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-rgx-carousel]').forEach(function (carousel) {
+        const track = carousel.querySelector('[data-rgx-track]');
+        const prevBtn = carousel.querySelector('[data-rgx-prev]');
+        const nextBtn = carousel.querySelector('[data-rgx-next]');
+
+        if (!track) return;
+        if (track.dataset.rgxReady === 'true') return;
+        track.dataset.rgxReady = 'true';
+
+        const originalSlides = Array.from(track.children);
+        if (originalSlides.length === 0) return;
+
+        const firstClone = originalSlides[0].cloneNode(true);
+        firstClone.setAttribute('data-rgx-clone', 'true');
+        track.appendChild(firstClone);
+
+        const slides = Array.from(track.children);
+        let currentIndex = 0;
+        let autoPlay = null;
+        let isTransitioning = false;
+
+        function updateCarousel(withTransition = true) {
+            track.style.transition = withTransition ? 'transform .45s ease' : 'none';
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function goNext() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex += 1;
+            updateCarousel(true);
+        }
+
+        function goPrev() {
+            if (isTransitioning) return;
+
+            if (currentIndex === 0) {
+                track.style.transition = 'none';
+                currentIndex = slides.length - 2;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        isTransitioning = true;
+                        currentIndex -= 1;
+                        updateCarousel(true);
+                    });
+                });
+
+                return;
+            }
+
+            isTransitioning = true;
+            currentIndex -= 1;
+            updateCarousel(true);
+        }
+
+        function startAutoPlay() {
+            if (originalSlides.length <= 1) return;
+            stopAutoPlay();
+            autoPlay = setInterval(goNext, 4000);
+        }
+
+        function stopAutoPlay() {
+            if (autoPlay) {
+                clearInterval(autoPlay);
+                autoPlay = null;
+            }
+        }
+
+        track.addEventListener('transitionend', function () {
+            if (currentIndex === slides.length - 1) {
+                currentIndex = 0;
+                updateCarousel(false);
+            }
+
+            isTransitioning = false;
+        });
+
+        prevBtn?.addEventListener('click', function () {
+            stopAutoPlay();
+            goPrev();
+            startAutoPlay();
+        });
+
+        nextBtn?.addEventListener('click', function () {
+            stopAutoPlay();
+            goNext();
+            startAutoPlay();
+        });
+
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+
+        updateCarousel(false);
+        startAutoPlay();
+    });
+});
+</script>
+
+
 @endpush

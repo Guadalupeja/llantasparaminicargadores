@@ -188,7 +188,9 @@
                             </a>
                        </div>
                     </div>
-
+<a href="{{ route('blog.index') }}" class="px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
+    Blog
+</a>
                     <a href="{{ url('/contacto') }}" class="px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
                         Contacto
                     </a>
@@ -322,6 +324,10 @@
                         </div>
                     </div>
                 </div>
+
+                <a href="{{ route('blog.index') }}" class="px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
+                    Blog
+                </a>
 
                 <a href="{{ url('/contacto') }}" class="mt-2 rounded-xl px-4 py-3 text-[15px] font-medium text-white transition hover:bg-white/5 hover:text-[#e76a3e]">
                     Contacto

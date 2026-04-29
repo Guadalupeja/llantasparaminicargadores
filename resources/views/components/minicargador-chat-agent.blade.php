@@ -501,8 +501,8 @@
 
                     await this.botReply(() => {
                         this.addBotOptions('Perfecto. Ahora dime qué medida necesitas.', [
-                            { label: '31X10-20/7.5 (10-16.5)', value: '10-16.5', action: 'measure' },
-                            { label: '33X12-20/7.5 (12-16.5)', value: '12-16.5', action: 'measure' },
+                            { label: '10-16.5 (31X10-20/7.5)', value: '10-16.5', action: 'measure' },
+                            { label: '12-16.5 (33X12-20/7.5)', value: '12-16.5', action: 'measure' },
                         ]);
                     });
 
@@ -695,11 +695,11 @@
 
             selectedMeasureLabelForForm() {
                 if (this.selectedMeasure === '10-16.5') {
-                    return '31X10-20/7.5 (10-16.5)';
+                    return '10-16.5 (31X10-20/7.5)';
                 }
 
                 if (this.selectedMeasure === '12-16.5') {
-                    return '33X12-20/7.5 (12-16.5)';
+                    return '12-16.5 (33X12-20/7.5)';
                 }
 
                 return '';

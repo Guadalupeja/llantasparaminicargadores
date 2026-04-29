@@ -231,7 +231,7 @@ public function landing12165(): View
                     'Compound resistente a cortes',
                     'Opciones Smooth y Solidflex',
                     'Excelente tracción',
-                    'Hasta 3 veces más desgaste vs neumática',
+                    'Hasta 3 veces más hule para desgaste vs llanta neumática',
                 ],
                 'spec_items' => [
                     ['label' => 'Medida', 'value' => '12-16.5'],
@@ -243,9 +243,9 @@ public function landing12165(): View
             [
                 'name' => 'Brawler HD',
                 'tag' => 'Sólida para servicio severo',
-                'description' => 'Muy fuerte para trabajo rudo, con ventaja comercial clara cuando buscas una solución con rueda integrada.',
+                'description' => 'Muy fuerte para trabajo rudo, con ventaja comercial clara cuando buscas una solución con ensamble de rin de fábrica integrado.',
                 'highlights' => [
-                    'No requiere prensa',
+                    'No requiere prensa (rin incluido)',
                     'Wheel & disk system integrado',
                     'Mayor resistencia a corte y chunking',
                     'Probada por OEMs',
@@ -491,7 +491,7 @@ public function landing12165(): View
                 'highlights' => [
                     'Compound resistente a cortes',
                     'Opciones Smooth y Solidflex',
-                    'Hasta 3 veces más desgaste vs neumática',
+                    'Hasta 3 veces más hule para desgaste vs llanta neumática',
                     'Menos tiempo muerto',
                 ],
                 'spec_items' => [
@@ -504,9 +504,9 @@ public function landing12165(): View
             [
                 'name' => 'Brawler HD',
                 'tag' => 'Sólida para servicio severo',
-                'description' => 'Pensada para servicio severo, con sistema integrado que simplifica la instalación y reduce tiempos de montaje.',
+                'description' => 'Pensada para servicio severo, incluye ensamble de fábrica con rin, que simplifica la instalación y reduce tiempos de montaje.',
                 'highlights' => [
-                    'No requiere prensa',
+                    'No requiere prensa (rin incluido)',
                     'Wheel & disk system integrado',
                     'Mayor resistencia a corte y chunking',
                     'Probada por OEMs',

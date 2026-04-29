@@ -218,6 +218,38 @@
                             </span>
                         </li>
 
+<li class="rounded-lg border border-white/10 bg-white/5 p-4">
+    <h3 class="text-[18px] font-semibold text-white">
+        Matriz Puebla
+    </h3>
+
+    <p class="mt-2 text-[14px] leading-6 text-white/80">
+        Atención comercial y técnica para selección, cotización y seguimiento de llantas Bobcat.
+        Matriz en Puebla.
+    </p>
+</li>
+
+<li class="rounded-lg border border-white/10 bg-white/5 p-4">
+    <h3 class="text-[18px] font-semibold text-white">
+        Almacenes con entrega y montaje
+    </h3>
+
+    <ul class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 border-0 p-0 text-[14px] text-white/85">
+        <li>EDOMEX</li>
+        <li>PUEBLA</li>
+        <li>GUANAJUATO</li>
+        <li>NUEVO LEÓN</li>
+        <li>SAN LUIS POTOSÍ</li>
+        <li>JALISCO</li>
+        <li>AGUASCALIENTES</li>
+    </ul>
+
+    <p class="mt-3 text-[14px] leading-6 text-white/80">
+        Consulta stock y disponibilidad de prensa para montaje.
+    </p>
+</li>
+
+
                         <li>
                             <a href="tel:8332462205" class="inline-flex items-center gap-3 text-white transition hover:text-white/80">
                                 <svg class="h-5 w-5 shrink-0 text-[#e76a3e]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
