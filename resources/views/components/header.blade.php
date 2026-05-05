@@ -130,7 +130,9 @@
                     <a href="{{ url('/llantas-neumaticas-para-minicargador') }}" class="px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
                         Llantas neumáticas
                     </a>
-
+                        <a href="{{ url('/llantas-para-cargadores') }}" class="px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
+    Llantas para cargadores
+</a>
                     <div class="group relative">
                         <a href="https://llantasdemontacargas.com/tienda-en-linea/" target="_blank" rel="noopener noreferrer" class="flex items-center px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
                             Compra en linea
@@ -228,6 +230,10 @@
                         <a href="{{ url('/llantas-neumaticas-para-minicargador') }}" class="rounded-xl px-4 py-3 text-[15px] font-medium text-white transition hover:bg-white/5 hover:text-[#e76a3e]">
                             Llantas neumáticas
                         </a>
+
+                        <a href="{{ url('/llantas-para-cargadores') }}" class="px-[15px] py-[30px] text-[16px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e]">
+    Llantas para cargadores
+</a>
 
                         <div class="mt-1 rounded-xl border border-white/10 bg-white/[0.03]">
                             <button

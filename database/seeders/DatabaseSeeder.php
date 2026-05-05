@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
             PageSeeder::class,
             PostCategorySeeder::class,
             PostSeeder::class,
+                LoaderTiresSeeder::class,
+
         ]);
     }
 }

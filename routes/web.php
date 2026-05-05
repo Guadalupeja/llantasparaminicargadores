@@ -48,6 +48,8 @@ Route::get('/llantas-solidas-para-minicargador', [ProductCategoryController::cla
 
 Route::get('/llantas-neumaticas-para-minicargador', [ProductCategoryController::class, 'pneumatic'])
     ->name('categories.pneumatic');
+Route::view('/llantas-para-cargadores', 'categories.cargadores')
+    ->name('categories.cargadores');
 
 Route::get('/llantas-solidas-para-minicargador/{product}', [ProductController::class, 'showSolid'])
     ->name('products.solid.show');
@@ -55,6 +57,8 @@ Route::get('/llantas-solidas-para-minicargador/{product}', [ProductController::c
 Route::get('/llantas-neumaticas-para-minicargador/{product}', [ProductController::class, 'showPneumatic'])
     ->name('products.pneumatic.show');
 
+Route::get('/llantas-para-cargadores/{product:slug}', [ProductController::class, 'show'])
+    ->name('cargadores.products.show');
 /*
 |--------------------------------------------------------------------------
 | Landings de medidas
