@@ -57,8 +57,24 @@ Route::get('/llantas-solidas-para-minicargador/{product}', [ProductController::c
 Route::get('/llantas-neumaticas-para-minicargador/{product}', [ProductController::class, 'showPneumatic'])
     ->name('products.pneumatic.show');
 
-Route::get('/llantas-para-cargadores/{product:slug}', [ProductController::class, 'show'])
+Route::get('/llantas-para-cargadores/{product}', [ProductController::class, 'showCargadores'])
     ->name('cargadores.products.show');
+
+    Route::get('/llantas-para-cargadores', [ProductCategoryController::class, 'loaders'])
+    ->name('cargadores.index');
+
+Route::get('/llantas-para-cargadores/{product}', [ProductController::class, 'showCargadores'])
+    ->name('cargadores.products.show');
+
+
+Route::get('/llantas-para-manipulador-telescopico', [ProductCategoryController::class, 'telehandler'])
+    ->name('telehandler.index');
+
+Route::get('/llantas-para-manipulador-telescopico/{product}', [ProductController::class, 'showTelehandler'])
+    ->name('telehandler.products.show');
+
+    Route::get('/llantas-para-manipulador-telescopico/{product}', [ProductController::class, 'showTelehandler'])
+    ->name('telehandler.products.show');
 /*
 |--------------------------------------------------------------------------
 | Landings de medidas

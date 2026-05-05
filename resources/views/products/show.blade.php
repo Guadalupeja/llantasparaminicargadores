@@ -5,13 +5,20 @@
         $features = is_array($product->features) ? $product->features : [];
         $category = $product->category;
 
-        $categoryUrl = $category?->slug === 'llantas-solidas-para-minicargador'
-            ? url('/llantas-solidas-para-minicargador')
-            : url('/llantas-neumaticas-para-minicargador');
+$categoryUrls = [
+    'llantas-solidas-para-minicargador' => url('/llantas-solidas-para-minicargador'),
+    'llantas-neumaticas-para-minicargador' => url('/llantas-neumaticas-para-minicargador'),
+    'llantas-para-cargadores' => url('/llantas-para-cargadores'),
+    'llantas-para-manipulador-telescopico' => url('/llantas-para-manipulador-telescopico'),
+];
 
-        $productUrl = $category?->slug === 'llantas-solidas-para-minicargador'
-            ? url('/llantas-solidas-para-minicargador/' . $product->slug)
-            : url('/llantas-neumaticas-para-minicargador/' . $product->slug);
+        $categoryUrl = $category
+            ? ($categoryUrls[$category->slug] ?? url('/'))
+            : url('/');
+
+        $productUrl = $category
+            ? $categoryUrl . '/' . $product->slug
+            : url('/producto/' . $product->slug);
 
         $productImage = $product->hero_image
             ? asset('storage/' . ltrim($product->hero_image, '/'))
@@ -93,14 +100,14 @@
     @endphp
 
     @php
-    $heroPreload = $product->hero_image
-        ? asset('storage/' . ltrim($product->hero_image, '/'))
-        : null;
-@endphp
+        $heroPreload = $product->hero_image
+            ? asset('storage/' . ltrim($product->hero_image, '/'))
+            : null;
+    @endphp
 
-@if ($heroPreload)
-    <link rel="preload" as="image" href="{{ $heroPreload }}" fetchpriority="high">
-@endif
+    @if ($heroPreload)
+        <link rel="preload" as="image" href="{{ $heroPreload }}" fetchpriority="high">
+    @endif
 
     <script type="application/ld+json">
         {!! json_encode($productStructuredData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
@@ -124,9 +131,16 @@
 
     $category = $product->category;
 
-    $categoryUrl = $category?->slug === 'llantas-solidas-para-minicargador'
-        ? url('/llantas-solidas-para-minicargador')
-        : url('/llantas-neumaticas-para-minicargador');
+$categoryUrls = [
+    'llantas-solidas-para-minicargador' => url('/llantas-solidas-para-minicargador'),
+    'llantas-neumaticas-para-minicargador' => url('/llantas-neumaticas-para-minicargador'),
+    'llantas-para-cargadores' => url('/llantas-para-cargadores'),
+    'llantas-para-manipulador-telescopico' => url('/llantas-para-manipulador-telescopico'),
+];
+
+    $categoryUrl = $category
+        ? ($categoryUrls[$category->slug] ?? url('/'))
+        : url('/');
 
     $categoryTitle = $category?->title ?: $category?->name;
     $categoryIntro = $category?->intro;

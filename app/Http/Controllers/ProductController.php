@@ -44,4 +44,47 @@ class ProductController extends Controller
 
         return view('products.show', compact('product', 'seo'));
     }
+
+
+public function showCargadores(Product $product): View
+{
+    $product->load('category');
+
+    abort_if(! $product->status, 404);
+    abort_if(! $product->category, 404);
+    abort_if($product->category->slug !== 'llantas-para-cargadores', 404);
+
+    $seo = [
+        'title' => $product->title,
+        'description' => $product->meta_description,
+        'canonical' => url('/llantas-para-cargadores/' . $product->slug),
+        'image' => $product->hero_image
+            ? asset('storage/' . ltrim($product->hero_image, '/'))
+            : asset('images/seo/default.jpg'),
+        'robots' => 'index,follow',
+    ];
+
+    return view('products.show', compact('product', 'seo'));
+}
+public function showTelehandler(Product $product): View
+{
+    $product->load('category');
+
+    abort_if(! $product->status, 404);
+    abort_if(! $product->category, 404);
+    abort_if($product->category->slug !== 'llantas-para-manipulador-telescopico', 404);
+
+    $seo = [
+        'title' => $product->title,
+        'description' => $product->meta_description,
+        'canonical' => url('/llantas-para-manipulador-telescopico/' . $product->slug),
+        'image' => $product->hero_image
+            ? asset('storage/' . ltrim($product->hero_image, '/'))
+            : asset('images/seo/default.jpg'),
+        'robots' => 'index,follow',
+    ];
+
+    return view('products.show', compact('product', 'seo'));
+}
+
 }
