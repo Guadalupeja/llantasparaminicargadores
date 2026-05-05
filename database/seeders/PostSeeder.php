@@ -18,6 +18,7 @@ class PostSeeder extends Seeder
                 'excerpt' => 'Descubre las diferencias entre llantas sólidas y neumáticas para minicargador, cuándo conviene cada una y cómo elegir según el piso, la carga, los turnos y el tipo de trabajo.',
                 'seo_title' => 'Llantas sólidas vs neumáticas para minicargador | Guía 2026',
                 'seo_description' => 'Compara llantas sólidas y neumáticas para minicargador. Conoce ventajas, desventajas, aplicaciones y cuál conviene según tu operación.',
+                'featured_image' => 'blog/post 1.png',
                 'content' => '
                     <p>Elegir entre <strong>llantas sólidas</strong> y <strong>llantas neumáticas para minicargador</strong> no es solo una cuestión de precio. La decisión correcta depende del tipo de superficie, los riesgos de ponchadura, la intensidad de uso del equipo y el costo real que representa detener la operación por una falla.</p>
 
@@ -137,13 +138,14 @@ class PostSeeder extends Seeder
                     <p>En Ruguex te ayudamos a seleccionar la mejor opción según tu aplicación. Si buscas <a href="/llantas-solidas-para-minicargador">llantas sólidas para minicargador</a>, <a href="/llantas-neumaticas-para-minicargador">llantas neumáticas para minicargador</a> o una recomendación para tu equipo Bobcat, podemos orientarte con base en la medida y el trabajo real de la máquina.</p>
                 ',
             ],
-           [
-    'category' => 'Medidas y equivalencias',
-    'title' => 'Qué significa la medida 10-16.5 y su equivalencia 31x10-20/7.5',
-    'excerpt' => 'Te explicamos qué significa la medida 10-16.5 en llantas para minicargador, su equivalencia 31x10-20/7.5 y cómo usar esa información para cotizar correctamente.',
-    'seo_title' => 'Qué significa 10-16.5 y 31x10-20/7.5 | Guía para minicargador',
-    'seo_description' => 'Aprende qué significa la medida 10-16.5, su equivalencia 31x10-20/7.5 y cómo elegir la llanta correcta para minicargador según tu aplicación.',
-    'content' => '
+            [
+                'category' => 'Medidas y equivalencias',
+                'title' => 'Qué significa la medida 10-16.5 y su equivalencia 31x10-20/7.5',
+                'excerpt' => 'Te explicamos qué significa la medida 10-16.5 en llantas para minicargador, su equivalencia 31x10-20/7.5 y cómo usar esa información para cotizar correctamente.',
+                'seo_title' => 'Qué significa 10-16.5 y 31x10-20/7.5 | Guía para minicargador',
+                'seo_description' => 'Aprende qué significa la medida 10-16.5, su equivalencia 31x10-20/7.5 y cómo elegir la llanta correcta para minicargador según tu aplicación.',
+                'featured_image' => 'blog/post 2.png',
+                'content' => '
         <p>La medida <strong>10-16.5</strong> es una de las más comunes en llantas para minicargador. Sin embargo, muchas personas la encuentran también como <strong>31x10-20/7.5</strong>, lo que suele generar dudas al momento de cotizar, comparar fichas técnicas o validar compatibilidad con el equipo.</p>
 
         <p>Entender esta equivalencia es importante porque en la práctica comercial y técnica no todos los proveedores presentan la información de la misma forma. Algunos hablan en formato tradicional, otros usan una medida equivalente y otros combinan medida, rin y configuración en una sola descripción. Si no conoces esta relación, puedes terminar cotizando una llanta incorrecta o perder tiempo validando datos que en realidad sí corresponden al mismo tamaño.</p>
@@ -250,14 +252,15 @@ class PostSeeder extends Seeder
 
         <p>En Ruguex podemos ayudarte a identificar la mejor opción según tu operación. Si quieres comparar alternativas, revisa nuestras categorías de <a href="/llantas-solidas-para-minicargador">llantas sólidas para minicargador</a> y <a href="/llantas-neumaticas-para-minicargador">llantas neumáticas para minicargador</a>, o consulta directamente nuestras opciones para medida <a href="/llanta-10-16-5">10-16.5</a>.</p>
     ',
-],
-           [
-    'category' => 'Medidas y equivalencias',
-    'title' => 'Qué significa la medida 12-16.5 y su equivalencia 33x12-20/7.5',
-    'excerpt' => 'Aprende qué significa la medida 12-16.5 en llantas para minicargador, su equivalencia 33x12-20/7.5 y cómo elegir la opción correcta según la aplicación y el equipo.',
-    'seo_title' => 'Qué significa 12-16.5 y 33x12-20/7.5 | Guía para minicargador',
-    'seo_description' => 'Conoce qué significa la medida 12-16.5, su equivalencia 33x12-20/7.5 y cómo elegir la llanta correcta para minicargador según tu operación.',
-    'content' => '
+            ],
+            [
+                'category' => 'Medidas y equivalencias',
+                'title' => 'Qué significa la medida 12-16.5 y su equivalencia 33x12-20/7.5',
+                'excerpt' => 'Aprende qué significa la medida 12-16.5 en llantas para minicargador, su equivalencia 33x12-20/7.5 y cómo elegir la opción correcta según la aplicación y el equipo.',
+                'seo_title' => 'Qué significa 12-16.5 y 33x12-20/7.5 | Guía para minicargador',
+                'seo_description' => 'Conoce qué significa la medida 12-16.5, su equivalencia 33x12-20/7.5 y cómo elegir la llanta correcta para minicargador según tu operación.',
+                'featured_image' => 'blog/post 3.png',
+                'content' => '
         <p>La medida <strong>12-16.5</strong> es una de las referencias más importantes en llantas para minicargador cuando se buscan configuraciones de mayor capacidad, trabajo más severo y aplicaciones donde la llanta debe soportar exigencia constante. También es común encontrarla bajo la equivalencia <strong>33x12-20/7.5</strong>, lo que suele generar dudas al momento de cotizar o comparar productos.</p>
 
         <p>En la práctica, esta medida aparece con frecuencia en operaciones industriales, patios de maniobra, construcción, reciclaje y aplicaciones donde el minicargador trabaja con cargas más demandantes o con superficies que exigen una llanta más robusta. Por eso, entender bien la equivalencia no solo sirve para buscar mejor, sino también para elegir una configuración adecuada para el equipo y la aplicación real.</p>
@@ -383,14 +386,15 @@ class PostSeeder extends Seeder
 
         <p>En Ruguex podemos ayudarte a identificar la mejor alternativa según tu operación. Si quieres revisar opciones por aplicación, consulta nuestras categorías de <a href="/llantas-solidas-para-minicargador">llantas sólidas para minicargador</a> y <a href="/llantas-neumaticas-para-minicargador">llantas neumáticas para minicargador</a>, o visita nuestra página especializada en medida <a href="/llanta-12-16-5">12-16.5</a>.</p>
     ',
-],
-           [
-    'category' => 'Bobcat',
-    'title' => 'Cómo elegir llantas para minicargador Bobcat según la medida y la aplicación',
-    'excerpt' => 'Aprende cómo elegir llantas para minicargador Bobcat según la medida, el tipo de piso, la severidad de la operación y si conviene una opción sólida o neumática.',
-    'seo_title' => 'Cómo elegir llantas para minicargador Bobcat | Guía 2026',
-    'seo_description' => 'Descubre cómo elegir llantas para minicargador Bobcat según la medida, la aplicación y el tipo de trabajo. Guía práctica para cotizar mejor.',
-    'content' => '
+            ],
+            [
+                'category' => 'Bobcat',
+                'title' => 'Cómo elegir llantas para minicargador Bobcat según la medida y la aplicación',
+                'excerpt' => 'Aprende cómo elegir llantas para minicargador Bobcat según la medida, el tipo de piso, la severidad de la operación y si conviene una opción sólida o neumática.',
+                'seo_title' => 'Cómo elegir llantas para minicargador Bobcat | Guía 2026',
+                'seo_description' => 'Descubre cómo elegir llantas para minicargador Bobcat según la medida, la aplicación y el tipo de trabajo. Guía práctica para cotizar mejor.',
+                'featured_image' => 'blog/post 4.png',
+                'content' => '
         <p>Elegir correctamente unas <strong>llantas para minicargador Bobcat</strong> no depende solo de encontrar una medida compatible. Para tomar una buena decisión también es necesario considerar el tipo de superficie, el nivel de exigencia de la operación, la posibilidad de ponchaduras, el número de turnos de trabajo y si conviene una configuración <strong>sólida</strong> o <strong>neumática</strong>.</p>
 
         <p>Muchos problemas en operación comienzan desde una selección equivocada: desgaste prematuro, fallas frecuentes, menor estabilidad, paros inesperados o un costo total más alto del esperado. Por eso, más que comprar una llanta “que le quede”, lo ideal es elegir una solución alineada con el uso real del equipo.</p>
@@ -510,14 +514,15 @@ class PostSeeder extends Seeder
 
         <p>En Ruguex te ayudamos a elegir la mejor opción según la medida y el trabajo real del equipo. Si quieres revisar alternativas, puedes ver nuestras categorías de <a href="/llantas-solidas-para-minicargador">llantas sólidas para minicargador</a> y <a href="/llantas-neumaticas-para-minicargador">llantas neumáticas para minicargador</a>, o consultar nuestras páginas por medida <a href="/llanta-10-16-5">10-16.5</a> y <a href="/llanta-12-16-5">12-16.5</a>.</p>
     ',
-],
-           [
-    'category' => 'Guías de compra',
-    'title' => 'Cuándo conviene comprar llanta para minicargador con rin incluido',
-    'excerpt' => 'Descubre cuándo conviene comprar llanta para minicargador con rin incluido, qué ventajas ofrece, en qué casos reduce tiempos de instalación y qué datos debes validar antes de cotizar.',
-    'seo_title' => 'Llanta para minicargador con rin incluido | Cuándo conviene',
-    'seo_description' => 'Conoce cuándo conviene comprar llanta para minicargador con rin incluido, qué ventajas tiene y qué revisar antes de cotizar para evitar errores.',
-    'content' => '
+            ],
+            [
+                'category' => 'Guías de compra',
+                'title' => 'Cuándo conviene comprar llanta para minicargador con rin incluido',
+                'excerpt' => 'Descubre cuándo conviene comprar llanta para minicargador con rin incluido, qué ventajas ofrece, en qué casos reduce tiempos de instalación y qué datos debes validar antes de cotizar.',
+                'seo_title' => 'Llanta para minicargador con rin incluido | Cuándo conviene',
+                'seo_description' => 'Conoce cuándo conviene comprar llanta para minicargador con rin incluido, qué ventajas tiene y qué revisar antes de cotizar para evitar errores.',
+                'featured_image' => 'blog/post 5.png',
+                'content' => '
         <p>Comprar una <strong>llanta para minicargador con rin incluido</strong> puede ser una excelente decisión cuando la prioridad es ahorrar tiempo, evitar errores de compatibilidad y tener una solución lista para instalar. Sin embargo, no siempre es la mejor opción para todos los casos. La conveniencia real depende del tipo de equipo, la urgencia operativa, la aplicación y la información disponible al momento de cotizar.</p>
 
         <p>En muchas operaciones, el problema no está en la llanta, sino en el tiempo que se pierde cuando hay que desmontar, validar medidas, revisar birlos o corregir incompatibilidades del rin. Por eso, en lugar de comprar solo la llanta, muchos usuarios prefieren una configuración completa que reduzca riesgo y acelere la puesta en marcha del equipo.</p>
@@ -622,13 +627,13 @@ class PostSeeder extends Seeder
 
         <p>En Ruguex podemos ayudarte a cotizar una solución compatible con tu minicargador. Si quieres revisar opciones por tipo de llanta, consulta nuestras categorías de <a href="/llantas-solidas-para-minicargador">llantas sólidas para minicargador</a> y <a href="/llantas-neumaticas-para-minicargador">llantas neumáticas para minicargador</a>, o visita nuestras páginas especializadas en <a href="/llanta-10-16-5">10-16.5</a> y <a href="/llanta-12-16-5">12-16.5</a>.</p>
     ',
-],
+            ],
         ];
 
         foreach ($posts as $item) {
             $category = PostCategory::where('name', $item['category'])->first();
 
-            if (!$category) {
+            if (! $category) {
                 continue;
             }
 
@@ -643,6 +648,7 @@ class PostSeeder extends Seeder
                     'reading_time' => max(1, (int) ceil(str_word_count(strip_tags($item['content'])) / 180)),
                     'seo_title' => $item['seo_title'] ?? Str::limit($item['title'], 60, ''),
                     'seo_description' => $item['seo_description'] ?? Str::limit($item['excerpt'], 160, ''),
+                    'featured_image' => $item['featured_image'] ?? null,
                     'robots' => 'index,follow',
                     'status' => 'published',
                     'is_featured' => false,
