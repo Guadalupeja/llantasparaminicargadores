@@ -1,7 +1,7 @@
 <header class="sticky top-0 z-[1000] bg-black/95 text-white shadow-md backdrop-blur">
     {{-- Barra superior de contactos: solo escritorio --}}
     <div class="hidden border-b border-white/10 lg:block">
-        <div class="mx-auto flex min-h-[48px] max-w-[1440px] items-center justify-between gap-4 px-4 xl:px-6">
+        <div class="mx-auto flex min-h-[48px] max-w-[1600px] items-center justify-between gap-4 px-4 xl:px-6 2xl:px-8">
             <div class="flex min-w-0 flex-wrap items-center gap-x-6 gap-y-1">
                 <a href="tel:8332462205" class="inline-flex items-center whitespace-nowrap text-[14px] font-normal text-white no-underline transition-colors duration-200 hover:text-orange-400">
                     <svg class="mr-2 h-4 w-4 shrink-0 text-[#e76a3e]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -67,40 +67,40 @@
 
     {{-- Barra principal --}}
     <div class="border-t border-white/20 bg-black">
-        <div class="ruguex-container">
-            <div class="flex items-center justify-between py-2 lg:py-3">
-                <a href="{{ url('/') }}" class="shrink-0">
+        <div class="mx-auto w-full max-w-[1600px] px-4 xl:px-6 2xl:px-8">
+            <div class="flex items-center gap-6 py-2 lg:gap-8 lg:py-3">
+                <a href="{{ url('/') }}" class="w-[170px] shrink-0 lg:w-[210px]">
                     <img
                         src="{{ asset('img/home/logo-ruguex.png') }}"
                         alt="Llantas para minicargadores Ruguex"
-                        class="h-auto w-[150px] max-w-full sm:w-[175px] lg:w-[195px]"
+                        class="h-auto w-[150px] max-w-full sm:w-[170px] lg:w-[190px]"
                     >
                 </a>
 
-                {{-- Menú escritorio --}}
-                <nav class="hidden items-center gap-1 bg-black lg:flex xl:gap-2">
-                    <a href="{{ url('/') }}" class="px-[10px] py-[18px] text-[13px] font-semibold text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                {{-- Menú escritorio mejor distribuido --}}
+                <nav class="hidden flex-1 items-center justify-between gap-[2px] bg-black lg:flex xl:gap-1">
+                    <a href="{{ url('/') }}" class="px-[8px] py-[16px] text-[12px] font-semibold leading-[1.25] text-[#e76a3e] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                         Inicio
                     </a>
 
-                    <a href="{{ url('/llantas-solidas-para-minicargador') }}" class="px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                    <a href="{{ url('/llantas-solidas-para-minicargador') }}" class="w-[88px] px-[8px] py-[16px] text-center text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:w-[96px] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                         Llantas sólidas
                     </a>
 
-                    <a href="{{ url('/llantas-neumaticas-para-minicargador') }}" class="px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                    <a href="{{ url('/llantas-neumaticas-para-minicargador') }}" class="w-[104px] px-[8px] py-[16px] text-center text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:w-[112px] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                         Llantas neumáticas
                     </a>
 
-                    <a href="{{ url('/llantas-para-cargadores') }}" class="px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                    <a href="{{ url('/llantas-para-cargadores') }}" class="px-[8px] py-[16px] text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                         Cargadores
                     </a>
 
-                    <a href="{{ url('/llantas-para-manipulador-telescopico') }}" class="px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                    <a href="{{ url('/llantas-para-manipulador-telescopico') }}" class="w-[118px] px-[8px] py-[16px] text-center text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:w-[128px] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                         Manipulador telescópico
                     </a>
 
                     <div class="group relative">
-                        <a href="https://llantasdemontacargas.com/tienda-en-linea/" target="_blank" rel="noopener noreferrer" class="flex items-center px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                        <a href="https://llantasdemontacargas.com/tienda-en-linea/" target="_blank" rel="noopener noreferrer" class="flex w-[92px] items-center justify-center px-[8px] py-[16px] text-center text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:w-[98px] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                             Compra en linea
                         </a>
 
@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="group relative">
-                        <a href="{{ url('/somos') }}" class="flex items-center px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                        <a href="{{ url('/somos') }}" class="flex items-center justify-center px-[8px] py-[16px] text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                             Ruguex
                         </a>
 
@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="group relative">
-                        <a href="#" class="flex items-center px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                        <a href="#" class="flex w-[78px] items-center justify-center px-[8px] py-[16px] text-center text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:w-[84px] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                             Por máquina
                         </a>
 
@@ -142,7 +142,7 @@
                     </div>
 
                     <div class="group relative">
-                        <a href="#" class="flex items-center px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                        <a href="#" class="flex w-[78px] items-center justify-center px-[8px] py-[16px] text-center text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:w-[84px] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                             Por medida
                         </a>
 
@@ -157,11 +157,11 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('blog.index') }}" class="px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                    <a href="{{ route('blog.index') }}" class="px-[8px] py-[16px] text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                         Blog
                     </a>
 
-                    <a href="{{ url('/contacto') }}" class="px-[10px] py-[18px] text-[13px] font-semibold text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[12px] xl:py-[20px] xl:text-[14px]">
+                    <a href="{{ url('/contacto') }}" class="px-[8px] py-[16px] text-[12px] font-semibold leading-[1.25] text-white transition-colors duration-300 hover:text-[#e76a3e] xl:px-[10px] xl:py-[18px] xl:text-[13px]">
                         Contacto
                     </a>
                 </nav>
@@ -183,7 +183,7 @@
                 </button>
             </div>
 
-            {{-- Menú móvil mejorado --}}
+            {{-- Menú móvil --}}
             <div id="mobile-menu" class="hidden pb-5 lg:hidden" data-menu>
                 <div class="overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/95 shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
                     <nav class="flex flex-col p-3">
@@ -311,7 +311,6 @@
                             Contacto
                         </a>
 
-                        {{-- Bloque móvil visual inferior --}}
                         <div class="mt-4 rounded-xl border border-white/10 bg-gradient-to-r from-white/[0.04] to-white/[0.02] p-4">
                             <p class="text-sm font-semibold tracking-wide text-white">
                                 Síguenos
