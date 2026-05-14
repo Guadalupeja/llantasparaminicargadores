@@ -70,7 +70,7 @@
             var passiveOptions = { passive: true };
 
             window.addEventListener('load', function () {
-                setTimeout(loadGTMOnce, 2500);
+                setTimeout(loadGTMOnce, 1500);
             });
 
             window.addEventListener('scroll', loadGTMOnce, passiveOptions);
