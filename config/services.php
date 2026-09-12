@@ -28,6 +28,22 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+
+    'ruguex_core' => [
+        'url' => env(
+            'RGX_ASSISTANT_CORE_URL'
+        ),
+
+        'token' => env(
+            'RGX_ASSISTANT_CORE_TOKEN'
+        ),
+
+        'timeout' => (int) env(
+            'RGX_ASSISTANT_CORE_TIMEOUT',
+            30
+        ),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),

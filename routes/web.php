@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\MinicargadorLeadController;
+use App\Http\Controllers\RgxAssistantAdapterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
@@ -36,6 +37,10 @@ Route::post('/minicargador/lead', [MinicargadorLeadController::class, 'store'])
 
 Route::post('/chat-ruguex/lead', [MinicargadorLeadController::class, 'store'])
     ->name('chat.ruguex.lead.store');
+
+Route::post('/chat-ruguex/message', RgxAssistantAdapterController::class)
+    ->middleware('throttle:12,5')
+    ->name('chat.ruguex.message');
 
 /*
 |--------------------------------------------------------------------------
