@@ -103,7 +103,7 @@
     @include('components.footer')
 
 <x-ruguex-whatsapp-widget />
-<x-minicargador-chat-agent title="Agente virtual Ruguex" />
+<x-minicargador-chat-agent-ai title="Agente virtual Ruguex" />
 
     @stack('scripts')
 </body>

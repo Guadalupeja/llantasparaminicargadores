@@ -1,8 +1,11 @@
 import './bootstrap';
 
 import Alpine from 'alpinejs';
+import minicargadorAiChat from './components/minicargador-chat-agent-ai';
 
 window.Alpine = Alpine;
+
+Alpine.data('minicargadorAiChat', minicargadorAiChat);
 
 Alpine.start();
 
