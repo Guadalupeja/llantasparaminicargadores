@@ -28,7 +28,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-
     'ruguex_core' => [
         'url' => env(
             'RGX_ASSISTANT_CORE_URL'
@@ -49,6 +48,17 @@ return [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
+    ],
+
+    'ruguex_prices' => [
+        'endpoint' => env(
+            'RUGUEX_PRICES_ENDPOINT',
+            'https://llantasdemontacargas.com/tienda-en-linea/wp-json/ruguex/v1/final-prices'
+        ),
+        'cache_minutes' => (int) env(
+            'RUGUEX_PRICES_CACHE_MINUTES',
+            15
+        ),
     ],
 
 ];
