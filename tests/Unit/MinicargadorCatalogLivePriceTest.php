@@ -123,6 +123,90 @@ class MinicargadorCatalogLivePriceTest extends TestCase
         }
     }
 
+    public function test_home_banner_uses_live_prices_from_the_same_catalog(): void
+    {
+        Cache::flush();
+
+        config([
+            'services.ruguex_prices.endpoint' => 'https://prices.test/final-prices',
+            'services.ruguex_prices.cache_minutes' => 15,
+        ]);
+
+        Http::fake(
+            function (Request $request) {
+                parse_str(
+                    (string) parse_url(
+                        $request->url(),
+                        PHP_URL_QUERY
+                    ),
+                    $query
+                );
+
+                $ids = collect(
+                    explode(
+                        ',',
+                        (string) (
+                            $query['ids']
+                            ?? ''
+                        )
+                    )
+                )
+                    ->filter()
+                    ->map(
+                        fn ($id) => (int) $id
+                    );
+
+                return Http::response([
+                    'products' => $ids->map(
+                        fn ($id) => [
+                            'id' => $id,
+                            'price_mxn_with_iva' => (float) $id,
+                            'price_mxn_with_iva_formatted' => 'LIVE-'.$id,
+                        ]
+                    )
+                        ->values()
+                        ->all(),
+                ], 200);
+            }
+        );
+
+        $view = app(PageController::class)
+            ->home();
+
+        $homeItems = collect(
+            $view->getData()['homeItems']
+        );
+
+        $this->assertSame(
+            [
+                6380,
+                6377,
+                6348,
+                6351,
+                6383,
+                6386,
+                6360,
+                6366,
+                6357,
+            ],
+            $homeItems
+                ->pluck('product_id')
+                ->all()
+        );
+
+        foreach ($homeItems as $item) {
+            $this->assertSame(
+                'LIVE-'.$item['product_id'],
+                $item['price']
+            );
+
+            $this->assertSame(
+                'woocommerce_api',
+                $item['price_source']
+            );
+        }
+    }
+
     private function catalogItems(): array
     {
         $controller =

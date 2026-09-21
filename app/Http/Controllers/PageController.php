@@ -18,7 +18,9 @@ class PageController extends Controller
             'robots' => 'follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large',
         ];
 
-        return view('pages.home', compact('seo'));
+        $homeItems = $this->minicargadorHomeItems();
+
+        return view('pages.home', compact('seo', 'homeItems'));
     }
 
     public function about(): View
@@ -735,6 +737,48 @@ class PageController extends Controller
 
         return app(RuguexPriceService::class)
             ->applyToCatalog($catalog);
+    }
+
+    private function minicargadorHomeItems(): array
+    {
+        $items = collect($this->minicargadorCatalog())
+            ->flatMap(
+                fn ($measurements) => collect($measurements)
+                    ->flatMap(
+                        fn ($catalogItems) => collect($catalogItems)
+                    )
+            )
+            ->keyBy('product_id');
+
+        $labels = [
+            6380 => 'Neumática 10-16.5 1-2 turnos',
+            6377 => 'Neumática 10-16.5 3 turnos',
+            6348 => 'Sólida 10-16.5 3 turnos',
+            6351 => 'Sólida 10-16.5 con rin',
+            6383 => 'Neumática 12-16.5 1-2 turnos',
+            6386 => 'Neumática 12-16.5 3 turnos',
+            6360 => 'Sólida 12-16.5 3 turnos',
+            6366 => 'Sólida 12-16.5 con rin',
+            6357 => 'Sólida 12-16.5 SKS900',
+        ];
+
+        return collect(array_keys($labels))
+            ->map(
+                function (int $productId) use ($items, $labels) {
+                    $item = $items->get($productId);
+
+                    if (! is_array($item)) {
+                        return null;
+                    }
+
+                    $item['label'] = $labels[$productId];
+
+                    return $item;
+                }
+            )
+            ->filter()
+            ->values()
+            ->all();
     }
 
     private function minicargadorSharedData(): array
