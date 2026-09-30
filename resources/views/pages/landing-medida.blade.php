@@ -150,10 +150,62 @@
 @endpush
 
 @section('content')
+
+@if (!empty($landing['ads_test']))
+<style>
+    .rgx-hero--ads-test {
+        align-items: flex-start;
+        min-height: 560px;
+    }
+
+    .rgx-hero--ads-test .rgx-hero__inner {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .rgx-hero--ads-test .rgx-title {
+        font-size: clamp(2.25rem, 4vw, 4rem);
+        line-height: 1.02;
+        margin-bottom: .7rem;
+    }
+
+    .rgx-hero--ads-test .rgx-hero-test__microcopy {
+        margin-top: 0;
+        margin-bottom: .45rem;
+        line-height: 1.28;
+    }
+
+    .rgx-hero--ads-test .rgx-hero-test__benefits {
+        margin-top: 0;
+        margin-bottom: .7rem;
+        line-height: 1.2;
+    }
+
+    .rgx-hero--ads-test .rgx-btns {
+        margin-top: .4rem;
+    }
+
+    @media (max-width: 767px) {
+        .rgx-hero--ads-test .rgx-hero__inner {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .rgx-hero--ads-test .rgx-title {
+            font-size: clamp(2.15rem, 10vw, 3rem);
+        }
+
+        .rgx-hero--ads-test .rgx-subtitle {
+            line-height: 1.4;
+        }
+    }
+</style>
+@endif
+
 <div class="rgx-landing">
 
     {{-- HERO --}}
-    <section class="rgx-hero">
+    <section class="rgx-hero{{ !empty($landing['ads_test']) ? ' rgx-hero--ads-test' : '' }}">
         <div class="rgx-hero__media">
             <x-responsive-image
                 :path="$landing['hero_image']"
@@ -168,12 +220,49 @@
         <div class="ruguex-container rgx-hero__inner">
             <span class="rgx-badge">{{ $landing['badge'] }}</span>
             <h1 class="rgx-title">{{ $landing['title'] }}</h1>
-            <p class="rgx-subtitle">{{ $landing['description'] }}</p>
 
-            <div class="rgx-btns">
-                <a class="rgx-btn rgx-btn-primary" href="#cotizacion">Cotiza ahora</a>
-                <a class="rgx-btn rgx-btn-secondary" href="{{ $landing['shop_url'] }}" target="_blank" rel="noopener">Compra en línea</a>
-            </div>
+            @if (empty($landing['ads_test']))
+                <p class="rgx-subtitle">{{ $landing['description'] }}</p>
+            @endif
+
+            @if (!empty($landing['ads_test']))
+                <p class="rgx-subtitle rgx-hero-test__microcopy">
+                    <strong>{{ $landing['hero_microcopy'] }}</strong>
+                </p>
+
+                @if (!empty($landing['hero_benefits']))
+                    <p class="rgx-subtitle rgx-hero-test__benefits">
+                        @foreach ($landing['hero_benefits'] as $benefit)
+                            <strong>{{ $benefit }}</strong>@if (!$loop->last) · @endif
+                        @endforeach
+                    </p>
+                @endif
+
+                <div class="rgx-btns">
+                    <a
+                        class="rgx-btn rgx-btn-primary"
+                        href="{{ $landing['hero_whatsapp_url'] }}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        {{ $landing['hero_cta_primary'] }}
+                    </a>
+
+                    <a
+                        class="rgx-btn rgx-btn-secondary"
+                        href="{{ $landing['shop_url'] }}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        {{ $landing['hero_cta_secondary'] }}
+                    </a>
+                </div>
+            @else
+                <div class="rgx-btns">
+                    <a class="rgx-btn rgx-btn-primary" href="#cotizacion">Cotiza ahora</a>
+                    <a class="rgx-btn rgx-btn-secondary" href="{{ $landing['shop_url'] }}" target="_blank" rel="noopener">Compra en línea</a>
+                </div>
+            @endif
         </div>
     </section>
 

@@ -96,6 +96,19 @@ class PageController extends Controller
             'title' => 'Llantas Bobcat 12-16.5 para minicargador | Trelleborg Brawler y SK',
             'description' => 'La medida Bobcat 12-16.5, equivalente a 33x12-20/7.5, es una de las más utilizadas en minicargadores que trabajan con cargas pesadas, superficies demandantes y jornadas continuas. En Ruguex te ayudamos a elegir entre llantas sólidas y neumáticas Trelleborg según el tipo de operación, el piso y el nivel de exigencia de tu equipo.',
 
+            // Test controlado de conversión para tráfico de Ads.
+            // Solo se define en la landing 12-16.5.
+            'ads_test' => true,
+            'hero_microcopy' => '12-16.5 / 33x12-20/7.5 para trabajo pesado. Elige sólida o neumática con asesoría según tu operación.',
+            'hero_cta_primary' => 'Cotizar 12-16.5 por WhatsApp',
+            'hero_cta_secondary' => 'Ver precios 12-16.5',
+            'hero_whatsapp_url' => 'https://wa.me/528332395885?text=Hola,%20necesito%20cotizar%20llantas%2012-16.5%20para%20minicargador.',
+            'hero_benefits' => [
+                'Stock disponible',
+                'Montaje especializado',
+                'Garantía directa',
+            ],
+
             'hero_image' => 'landings/12-16-5/hero-12-16-5.png',
             'intro_image' => 'landings/12-16-5/intro-12-16-5.jpg',
             'uses_image' => 'landings/12-16-5/usos-12-16-5.jpg',
